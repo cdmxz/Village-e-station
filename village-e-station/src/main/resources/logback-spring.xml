@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+logback
+日志样式配置
+-->
+<configuration>
+<!--    log文件目录-->
+    <property name="server.name" value="Village-E-Station"/>
+    <property name="log.path" value="logs"/>
+    <!-- 日志输出格式 -->
+    <!--
+            %d{yyyy-MM-dd  HH:mm:ss.SSS} 时间格式 hh是12h制  HH是24h制
+            [%thread]      线程
+            %highlight(%-5level) 高亮级别
+            %logger{36}    日志包     36包长度
+            [%file : %line]   目标类  和  行数
+            %msg           log信息
+            -			   一个间隔符
+            %n              换行
+            (encoder必需的）-->
+    <property name="PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%-5level) %highlight(%logger{50}) %highlight([%file : %line]) - %msg%n"/>
+
+    <!--    log文件路径名，无扩展名-->
+    <property name="LOG_HOME" value="${log.path}/${server.name}.%d{yyyy-MM-dd}"/>
+
+
+    <!--    控制台输出格式-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <!-- 信息日志：输出全部日志到文件 -->
+    <appender name="fileInfo" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>UTF-8</charset>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}-info-%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>7</MaxHistory>
+            <maxFileSize>50MB</maxFileSize>
+        </rollingPolicy>
+        <ImmediateFlush>true</ImmediateFlush>
+    </appender>
+
+    <!-- 错误日志：将错误日志输出到独立文件 -->
+    <appender name="fileError"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>utf-8</charset>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
+            <FileNamePattern>${LOG_HOME}-error-%i.log</FileNamePattern>
+            <!--日志文件保留天数-->
+            <MaxHistory>7</MaxHistory>
+            <maxFileSize>50MB</maxFileSize>
+        </rollingPolicy>
+        <ImmediateFlush>true</ImmediateFlush>
+    </appender>
+
+    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>5000</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <includeCallerData>false</includeCallerData>
+        <appender-ref ref="fileInfo"/>
+        <appender-ref ref="fileError"/>
+    </appender>
+
+    <!-- 日志输出级别 -->
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="fileInfo"/>
+        <appender-ref ref="fileError"/>
+    </root>
+</configuration>
+

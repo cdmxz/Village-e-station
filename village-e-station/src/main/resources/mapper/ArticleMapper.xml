@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ces.Village.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Article">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="articleType" column="article_type" jdbcType="INTEGER"/>
+            <result property="author" column="author" jdbcType="VARCHAR"/>
+            <result property="authorId" column="author_id" jdbcType="BIGINT"/>
+            <result property="dateCreated" column="date_created" jdbcType="TIMESTAMP"/>
+            <result property="dateUpdated" column="date_updated" jdbcType="TIMESTAMP"/>
+            <result property="readNumber" column="read_number" jdbcType="BIGINT"/>
+            <result property="commentNumber" column="comment_number" jdbcType="INTEGER"/>
+            <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,119 @@
+#
+#
+#
+# 千万不要把此文件提交到git
+#
+#
+#
+
+server:
+  http.port: 7270 # http端口 勿删
+  port: 7271 # https端口
+  ssl:
+    # ssl证书存放的位置
+    key-store: classpath:xxxxxxxxxx.com.jks
+    # 证书别名
+    key-alias: xxxxxxxxxx.com
+    # 证书格式 P12
+    key-store-type: JKS
+    key-store-password: xxxxxxxxxx
+
+spring:
+  main:
+    lazy-initialization: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://xxxxxxxxxx:3306/countryside
+    username: xxxxxxxxxx
+    password: xxxxxxxxxx
+  redis:
+    host: xxxxxxxxxx # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: xxxxxxxxxx # Redis服务器连接密码（默认为空）
+    timeout: 3000
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    #控制台打印完整带参数SQL语句
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    call-setters-on-nulls: true
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+  type-aliases-package: com.ces.Village.pojo.entity
+
+ces:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    secret-key: suzelun
+    # 设置jwt过期时间 15天
+    token-ttl: 1296000000
+    # 设置前端传递过来的令牌名称
+    token-name: User-Token
+
+  alikey:
+    # 阿里云子账户key 注意给oss、短信、内容审核的权限
+    access-key-id: xxxxxxxxxx
+    access-key-secret: xxxxxxxxxx
+
+  # 阿里云oss配置
+  # https://help.aliyun.com/zh/oss/developer-reference/use-temporary-access-credentials-provided-by-sts-to-access-oss
+  alioss:
+    bucket-name: xxxxxxxxxx
+    role-arn: acs:ram::xxxxxxxxxx
+    role-session-name: xxxxxxxxxx
+    end-point: oss-cn-guangzhou.aliyuncs.com # 用于上传、下载、删除、文件
+    sts-end-point: sts.cn-guangzhou.aliyuncs.com # 用于获取sts令牌
+
+  # 阿里云短信（sms）配置
+  alisms:
+    sign-name: 阿里云短信测试 # 短信签名
+    template-code: SMS_154950909 # 短信模板
+
+wechat:
+  api:
+    # 下面的是旧版APPID
+    appId: xxxxxxxxxx
+    # 小程序密钥（旧版APPID）
+    appSecret: xxxxxxxxxx
+
+  # 微信支付配置
+  pay:
+    # 小程序APPID
+    appId: xxxxxxxxxx
+    # 小程序密钥（旧版APPID）
+    appSecret: xxxxxxxxxx
+    # 商户号
+    mchId: xxxxxxxxxx
+    # 商户API证书的证书序列号
+    mch-serial-no: xxxxxxxxxx
+    # apiv3密钥
+    apiV3Key: xxxxxxxxxx
+    # 微信支付API证书
+    weChatPayCertFilePath: classpath:wx/apiclient_cert.p12
+    # 证书私钥，不需要加 classpath:
+    private-key-file-path: wx/apiclient_key.pem
+    # 支付成功回调通知
+    notifyUrl: https://xxxxxxxxxx.com:7271/api/wxpay/notify
+    # 退款回调通知
+    refundNotifyUrl: https://xxxxxxxxxx.com:7271/api/wxpay/notify/refund
+
+  # 消息推送配置
+  push:
+    # 推送token
+    msg-post-token: xxxxxxxxxx
+    # 推送，用于解密消息的AesKey
+    msg-post-a-eSKey: xxxxxxxxxx
+    #  退款申请通知 模板ID
+    msg-refund-id: xxxxxxxxxx
+    # 订单发货提醒 模板ID
+    msg-send-out-goods-id: xxxxxxxxxx
+    # 评论删除提醒 模板ID
+    msg-comment-deletion-id: xxxxxxxxxx
+    # 审核结果通知 模板ID
+    msg-review-id: xxxxxxxxxx
+    # 支付成功通知 模板ID
+    msg-payment-success-id: xxxxxxxxxx

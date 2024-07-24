@@ -1,0 +1,285 @@
+{
+	"pages": [{
+			"path": "pages/home/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "登录"
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "快速注册",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/admin",
+			"style": {
+				"navigationBarTitleText": "干部登录",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/article/articleList",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "文章列表",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/article/articleListAd",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "所有文章",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/article/articleDetails",
+			"style": {
+				"navigationBarTitleText": "文章详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/article/publishArticle",
+			"style": {
+				"navigationBarTitleText": "发布文章",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/protocol/service",
+			"style": {
+				"navigationBarTitleText": "用户服务协议",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/protocol/policy",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				// "navigationStyle": "custom",
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/information",
+			"style": {
+				"navigationBarTitleText": "修改个人信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/publish",
+			"style": {
+				"navigationBarTitleText": "我的发布",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/privacy",
+			"style": {
+				"navigationBarTitleText": "隐私与协议",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/job/jobList",
+			"style": {
+				"navigationBarTitleText": "就业",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/index",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "商城",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/shop",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "商城",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/details",
+			"style": {
+				"navigationBarTitleText": "商城",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/job",
+			"style": {
+				"navigationBarTitleText": "我发布的招聘",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/cart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/address/index",
+			"style": {
+				"navigationBarTitleText": "收货地址",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/address/add",
+			"style": {
+				"navigationBarTitleText": "添加地址",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/address/edit",
+			"style": {
+				"navigationBarTitleText": "修改地址",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/order/index",
+			"style": {
+				"navigationBarTitleText": "订单列表",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/order/detail",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/order/submit",
+			"style": {
+				"navigationBarTitleText": "提交订单",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/job/publish",
+			"style": {
+				"navigationBarTitleText": "岗位发布",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/job/jobDetails",
+			"style": {
+				"navigationBarTitleText": "岗位详情",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/shopUpdate",
+			"style": {
+				"navigationBarTitleText": "添加商品",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/userList",
+			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "用户列表",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/shopping/category",
+			"style": {
+				"navigationBarTitleText": "商品分类管理",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/enterprise",
+			"style": {
+				"navigationBarTitleText": "企业信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/my/review",
+			"style": {
+				"navigationBarTitleText": "评论审核",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/login/resetPwd",
+			"style": {
+				"navigationBarTitleText": "重置密码",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/order/refundDetail",
+			"style": {
+				"navigationBarTitleText": "退款详情",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	// 页面导航
+	"tabBar": {
+		"color": "#FFFFFF",
+		"selectedColor": "#F0E68C",
+		"backgroundColor": "#3cb371",
+		"list": [{
+				"text": "首页",
+				"pagePath": "pages/home/index",
+				"iconPath": "static/tabbar/fangzi.png",
+				"selectedIconPath": "static/tabbar/fangzi-select.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/my/index",
+				"iconPath": "static/tabbar/yonghu.png",
+				"selectedIconPath": "static/tabbar/yonghu-select.png"
+			}
+		]
+	},
+	"easycom": {
+		"autoscan": true
+	},
+	"globalStyle": {
+		"navigationBarBackgroundColor": "#3cb371",
+		"navigationBarTextStyle": "white",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+}

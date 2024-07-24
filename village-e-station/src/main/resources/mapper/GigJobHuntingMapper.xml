@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ces.Village.mapper.GigJobHuntingMapper">
+
+    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.GigJobHunting">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="expectedWork" column="expected_work" jdbcType="VARCHAR"/>
+        <result property="expectedSalary" column="expected_salary" jdbcType="VARCHAR"/>
+        <result property="contactPerson" column="contact_person" jdbcType="VARCHAR"/>
+        <result property="contactInformation" column="contact_information" jdbcType="VARCHAR"/>
+        <result property="workAddress" column="work_address" jdbcType="VARCHAR"/>
+        <result property="startTime" column="start_time" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+        <result property="publishTime" column="publish_time" jdbcType="TIMESTAMP"/>
+        <result property="deadline" column="deadline" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--    status == 0表示查询任意状态的招聘信息-->
+    <select id="getPageByUserIdAndStatus" resultType="com.ces.Village.pojo.entity.GigJobHunting">
+        SELECT g.*,r.reason
+        FROM gig_job_hunting g
+        LEFT JOIN reason r ON g.id= r.information_id AND r.type = 3
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                AND CONCAT(g.title, g.expected_work) LIKE CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="user_id != null">
+                AND user_id=#{user_id}
+            </if>
+            <if test="status != null and status != 0">
+                AND status=#{status}
+            </if>
+        </where>
+        order by publish_time desc
+    </select>
+</mapper>

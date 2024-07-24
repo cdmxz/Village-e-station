@@ -1,0 +1,10 @@
+       _ _ _                                       _        _   _             
+__   _(_) | | __ _  __ _  ___        ___       ___| |_ __ _| |_(_) ___  _ __  
+\ \ / / | | |/ _` |/ _` |/ _ \_____ / _ \_____/ __| __/ _` | __| |/ _ \| '_ \ 
+ \ V /| | | | (_| | (_| |  __/_____|  __/_____\__ \ || (_| | |_| | (_) | | | |
+  \_/ |_|_|_|\__,_|\__, |\___|      \___|     |___/\__\__,_|\__|_|\___/|_| |_|
+                   |___/
+
+${AnsiColor.BRIGHT_GREEN}Spring Boot 版本：${spring-boot.formatted-version}
+${AnsiColor.BRIGHT_GREEN}程序版本：${application.formatted-version}
+${AnsiColor.BRIGHT_BLACK}

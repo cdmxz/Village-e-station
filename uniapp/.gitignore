@@ -1,0 +1,6 @@
+#不需要提交的目录
+unpackage
+.idea
+node_modules
+.hbuilderx
+.vs

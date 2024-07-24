@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "crypto-js": "^4.2.0",
+    "js-base64": "^3.7.5",
+    "uview-ui": "^2.0.36",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

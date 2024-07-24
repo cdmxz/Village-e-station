@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ces.Village.mapper.GoodsMapper">
+    <update id="update">
+        update goods
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="postage != null">postage = #{postage},</if>
+            <if test="thumbnailUrl != null">thumbnail_url = #{thumbnailUrl},</if>
+            <if test="rotationUrls != null">rotation_urls = #{rotationUrls},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="categoryId != null">category_id = #{categoryId},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="stock != null">stock = #{stock},</if>
+            <if test="surplus != null">surplus = #{surplus},</if>
+            <if test="recentSales != null">recent_sales = #{recentSales},</if>
+            <if test="salesQuantity != null">sales_quantity = #{salesQuantity},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ces.Village.mapper.UsersMapper">
+
+    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Users">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="openId" column="openid" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="nickName" column="nick_name" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="idNumber" column="id_number" jdbcType="VARCHAR"/>
+            <result property="avatarUrl" column="avatar_url" jdbcType="VARCHAR"/>
+            <result property="village" column="village" jdbcType="VARCHAR"/>
+            <result property="addressDefaultId" column="address_default_id" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <update id="updateUserInfo" parameterType="com.ces.Village.pojo.entity.Users">
+           update users
+           <set>
+                <if test="name != null and name != ''">name = #{name},</if>
+                <if test="nickName != null and nickName != != ''">nick_name = #{nickName},</if>
+                <if test="phone != null and phone != ''">phone = #{phone},</if>
+                <if test="idNumber != null and idNumber != ''">id_number = #{idNumber},</if>
+                <if test="avatarUrl != null and avatarUrl != ''">avatar_url = #{avatarUrl},</if>
+                <if test="village != null and village != ''">village = #{village},</if>
+           </set>
+                where id = #{id};
+        </update>
+</mapper>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ces.Village.mapper.OrdersMapper">
+
+    <!--    根据订单状态查询订单列表-->
+    <resultMap id="OrderList" type="com.ces.Village.pojo.entity.Orders">
+        <id property="orderId" column="id" jdbcType="BIGINT"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
+        <result property="actualAmount" column="actual_amount" jdbcType="DECIMAL"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="expireTime" column="expire_time"/>
+
+        <collection property="orderDetails" ofType="com.ces.Village.pojo.entity.OrderDetail">
+            <id property="id" column="d_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
+            <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+            <result property="goodId" column="good_id" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+
+    <!--    orderStatus=0表示不添加 订单状态这个条件 查询
+    orderStatus=8 表示查询status=6 or status=7的记录
+    且只查询订单详情表中 发生退款的商品
+    -->
+    <select id="getOrderListByStatus" resultMap="OrderList">
+        SELECT o.id, o.order_no, o.order_status, o.actual_amount,o.order_time,
+               o.expire_time,
+        d.id as d_id, d.name, d.thumbnail_url, d.price, d.quantity,d.good_id
+        , d.status
+        FROM orders o
+        JOIN order_detail d ON d.order_no = o.order_no
+        <where>
+            <if test="keyword != null and keyword != '' ">
+                AND d.name LIKE CONCAT('%',#{keyword},'%')
+            </if>
+            <if test="orderStatus != null and orderStatus != 0">
+                AND order_status = #{orderStatus}
+            </if>
+        </where>
+        ORDER BY order_time DESC
+    </select>
+
+    <!--    根据订单状态和用户id 查询订单列表-->
+    <select id="getOrderListByStatusAndUserId" resultMap="OrderList">
+        SELECT o.id, o.order_no, o.order_status, o.actual_amount,o.order_time,
+               o.expire_time,
+        d.id as d_id, d.name, d.thumbnail_url, d.price, d.quantity,
+        d.good_id, d.status
+        FROM orders o
+        JOIN order_detail d ON d.order_no = o.order_no
+        <where>
+            <if test="orderStatus != null and orderStatus != 0">
+                AND order_status = #{orderStatus}
+            </if>
+            <if test="userId != null">
+                AND o.user_id = #{userId}
+            </if>
+        </where>
+        ORDER BY order_time DESC
+    </select>
+
+
+    <!--    查询订单详情-->
+    <resultMap id="OrderDetails" type="com.ces.Village.pojo.entity.Orders">
+        <id property="orderId" column="id" jdbcType="BIGINT"/>
+        <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
+        <result property="receiveInformation" column="receive_information" jdbcType="VARCHAR"/>
+        <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
+        <result property="postage" column="postage" jdbcType="DECIMAL"/>
+        <result property="discountAmount" column="discount_amount" jdbcType="DECIMAL"/>
+        <result property="totalAmount" column="total_amount" jdbcType="DECIMAL"/>
+        <result property="actualAmount" column="actual_amount" jdbcType="DECIMAL"/>
+        <result property="trackNumber" column="track_number" jdbcType="VARCHAR"/>
+        <result property="orderTime" column="order_time" jdbcType="TIMESTAMP"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="sendTime" column="send_time" jdbcType="TIMESTAMP"/>
+        <result property="receiveTime" column="receive_time" jdbcType="TIMESTAMP"/>
+        <result property="expireTime" column="expire_time"/>
+
+        <collection property="orderDetails" ofType="com.ces.Village.pojo.entity.OrderDetail">
+            <id property="id" column="d_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>
+            <result property="price" column="price" jdbcType="DECIMAL"/>
+            <result property="code" column="code" jdbcType="VARCHAR"/>
+            <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+            <result property="goodId" column="good_id" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+    <select id="getDetailsByOrderNo" resultMap="OrderDetails">
+        SELECT o.*,
+               d.id as d_id,
+               d.name,
+               d.thumbnail_url,
+               d.price,
+               d.quantity,
+               d.good_id,
+               d.status
+        FROM orders o
+                 JOIN order_detail d ON d.order_no = o.order_no
+        WHERE o.order_no = #{orderNo}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ces.Village.mapper.CommentsMapper">
+
+    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Comments">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="articleId" column="article_id" jdbcType="BIGINT"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="imgUrls" column="img_urls" jdbcType="OTHER"/>
+        <result property="dateCreated" column="date_created" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+<!--    通过articleId查询一篇文章的评论列表-->
+    <resultMap id="CommentList" type="com.ces.Village.pojo.entity.Comments">
+        <id property="id" column="id"/>
+        <result property="comment" column="comment"/>
+        <result property="userId" column="user_id"/>
+        <result property="imgUrls" column="img_urls"/>
+        <result property="dateCreated" column="date_created"/>
+        <result property="articleId" column="article_id"/>
+        <result property="status" column="status"/>
+        <association property="user" javaType="com.ces.Village.pojo.entity.Users">
+            <result property="nickName" column="nick_name"/>
+            <result property="avatarUrl" column="avatar_url"/>
+        </association>
+    </resultMap>
+
+    <select id="getCommentListPage" resultMap="CommentList">
+        SELECT c.id,
+        c.user_id,
+        c.comment,
+        c.img_urls,
+        c.article_id,
+        c.date_created,
+        u.nick_name,
+        u.avatar_url
+        FROM comments c
+        JOIN users u ON c.user_id = u.id
+        WHERE c.article_id = #{articleId} and c.is_deleted = 0 and status = 2
+        <if test="desc">
+            ORDER BY c.date_created DESC
+        </if>
+        <if test="!desc">
+            ORDER BY c.date_created ASC
+        </if>
+    </select>
+
+<!--    通过userId查询我发布的评论列表
+property是类中的属性名，column是查询之后返回的表字段名
+-->
+    <resultMap id="MyCommentList" type="com.ces.Village.pojo.entity.Comments">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="comment" column="comment"/>
+        <result property="articleId" column="article_id"/>
+        <result property="dateCreated" column="date_created"/>
+        <result property="status" column="status"/>
+        <result property="imgUrls" column="img_urls"/>
+        <association property="article" javaType="com.ces.Village.pojo.entity.Article">
+            <result property="id" column="article_id"/>
+            <result property="title" column="title"/>
+        </association>
+    </resultMap>
+
+    <select id="getMyCommentListPage" resultMap="MyCommentList">
+        SELECT c.id,
+        c.user_id,
+        c.article_id,
+        c.comment,
+        c.date_created,
+        a.id as article_id,
+        a.title,
+        c.status,
+        c.img_urls
+        FROM comments c
+        JOIN article a ON c.article_id=a.id
+        WHERE c.user_id = #{userId} and c.is_deleted=0
+        <if test="desc">
+            ORDER BY c.date_created DESC
+        </if>
+        <if test="!desc">
+            ORDER BY c.date_created ASC
+        </if>
+    </select>
+
+<!--    查询整个数据库的评论列表，根据状态-->
+    <!-- status=0 或 status=null，表示不限制状态-->
+    <resultMap id="DbCommentList" type="com.ces.Village.pojo.entity.Comments">
+        <id property="id" column="id"/>
+        <result property="comment" column="comment"/>
+        <result property="userId" column="user_id"/>
+        <result property="imgUrls" column="img_urls"/>
+        <result property="dateCreated" column="date_created"/>
+        <result property="articleId" column="article_id"/>
+        <result property="status" column="status"/>
+        <association property="user" javaType="com.ces.Village.pojo.entity.Users">
+            <result property="nickName" column="nick_name"/>
+            <result property="avatarUrl" column="avatar_url"/>
+        </association>
+        <association property="article" javaType="com.ces.Village.pojo.entity.Article">
+            <result property="id" column="article_id"/>
+            <result property="title" column="title"/>
+        </association>
+    </resultMap>
+
+    <select id="getCommentOfDbByStatus" resultMap="DbCommentList">
+        SELECT c.id,
+        c.user_id,
+        c.comment,
+        c.img_urls,
+        c.article_id,
+        c.date_created,
+        u.nick_name,
+        u.avatar_url,
+        a.id as article_id,
+        a.title
+        FROM comments c
+        JOIN users u ON c.user_id = u.id
+        JOIN article a ON c.article_id = a.id
+        <if test="status != null and status != 0">
+            WHERE c.status = #{status}
+        </if>
+        <if test="desc">
+            ORDER BY c.date_created DESC
+        </if>
+        <if test="!desc">
+            ORDER BY c.date_created ASC
+        </if>
+    </select>
+</mapper>
