@@ -1,7 +1,7 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.entity.Orders;
+import com.ces.village.pojo.entity.Orders;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;

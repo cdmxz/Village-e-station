@@ -1,4 +1,4 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

@@ -1,11 +1,11 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.dto.GoodsDTO;
-import com.ces.Village.pojo.entity.Goods;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ces.Village.pojo.vo.GoodsDetailVO;
-import com.ces.Village.pojo.vo.SurplusVO;
+import com.ces.village.pojo.dto.GoodsDTO;
+import com.ces.village.pojo.entity.Goods;
+import com.ces.village.pojo.vo.GoodsDetailVO;
+import com.ces.village.pojo.vo.SurplusVO;
 
 import java.util.List;
 

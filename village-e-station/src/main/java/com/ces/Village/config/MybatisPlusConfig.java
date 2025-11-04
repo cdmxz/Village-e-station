@@ -1,4 +1,4 @@
-package com.ces.Village.config;
+package com.ces.village.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;

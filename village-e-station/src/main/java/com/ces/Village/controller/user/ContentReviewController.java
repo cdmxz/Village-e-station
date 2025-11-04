@@ -1,21 +1,16 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.aliyun.green20220302.models.TextModerationResponse;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.AliReviewTypeConstant;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.dto.ContentReviewDTO;
-import com.ces.Village.pojo.dto.WxMediaCheckResponse;
-import com.ces.Village.pojo.entity.Users;
-import com.ces.Village.service.UsersService;
-import com.ces.Village.utils.AliSecCheckUtil;
-import com.ces.Village.utils.StringUtils;
-import com.ces.Village.utils.WxApiUtil;
-import io.swagger.annotations.Api;
+import com.ces.village.common.R;
+import com.ces.village.constant.AliReviewTypeConstant;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.dto.ContentReviewDTO;
+import com.ces.village.service.UsersService;
+import com.ces.village.utils.AliSecCheckUtil;
+import com.ces.village.utils.StringUtils;
+import com.ces.village.utils.WxApiUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,14 +19,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Duration;
 import java.util.HashMap;
 
 /**
  * 内容审核
  */
 @Log4j2
-@Api(tags = "内容审核接口")
+@Tag(name = "内容审核接口")
 @RestController
 @RequestMapping("/api/review")
 @RequiredArgsConstructor

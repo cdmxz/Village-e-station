@@ -1,17 +1,18 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
+
 
 /**
  * <p>
@@ -27,45 +28,45 @@ import java.time.LocalDateTime;
 @Data
 @Accessors(chain = true)
 @TableName("admin")
-@ApiModel(value="Admin对象", description="管理员信息")
+@Schema(name="Admin对象", description="管理员信息")
 public class AdminBackup implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
+     @Schema(name = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "姓名")
+     @Schema(name = "姓名")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty(value = "昵称")
+     @Schema(name = "昵称")
     @TableField("nick_name")
     private String nickName;
 
-    @ApiModelProperty(value = "密码")
+     @Schema(name = "密码")
     @TableField("password")
     private String password;
 
-    @ApiModelProperty(value = "手机号")
+     @Schema(name = "手机号")
     @TableField("phone")
     private String phone;
 
-    @ApiModelProperty(value = "头像的url地址")
+     @Schema(name = "头像的url地址")
     @TableField("avatar_url")
     private String avatarUrl;
 
-    @ApiModelProperty(value = "乡村地址")
+     @Schema(name = "乡村地址")
     @TableField("village")
     private String village;
 
-    @ApiModelProperty(value = "用户默认地址id")
+     @Schema(name = "用户默认地址id")
     @TableField("address_default_id")
     private Long addressDefaultId;
 
-    @ApiModelProperty(value = "创建时间")
+     @Schema(name = "创建时间")
     @TableField("create_time")
     private LocalDateTime createTime;
 

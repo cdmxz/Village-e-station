@@ -1,7 +1,7 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 

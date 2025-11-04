@@ -1,9 +1,9 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.dto.UserInformationDTO;
-import com.ces.Village.pojo.entity.Users;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ces.village.pojo.dto.UserInformationDTO;
+import com.ces.village.pojo.entity.Users;
 
 import java.io.Serializable;
 

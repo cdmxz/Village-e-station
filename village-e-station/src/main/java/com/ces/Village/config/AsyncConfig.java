@@ -1,4 +1,4 @@
-package com.ces.Village.config;
+package com.ces.village.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,6 @@ public class AsyncConfig {
 
     /**
      * 配置异步线程池
-     * @return
      */
     @Bean
     public TaskExecutor taskExecutor() {

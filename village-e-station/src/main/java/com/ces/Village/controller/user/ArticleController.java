@@ -1,37 +1,33 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.common.UserFactory;
+import com.ces.village.constant.ArticleTypeConstant;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.dto.ArticleDTO;
+import com.ces.village.pojo.entity.Article;
+import com.ces.village.pojo.entity.BaseUser;
+import com.ces.village.pojo.vo.ArticleListVo;
+import com.ces.village.pojo.vo.ArticleVo;
+import com.ces.village.service.ArticleService;
+import com.ces.village.service.CommentsService;
+import com.ces.village.service.OssService;
+import com.ces.village.utils.ConvertUtil;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.common.UserFactory;
-import com.ces.Village.constant.ErrorCodeEnum;
 
-import com.ces.Village.pojo.dto.ArticleDTO;
-import com.ces.Village.pojo.entity.Admin;
-import com.ces.Village.pojo.entity.BaseUser;
-import com.ces.Village.pojo.entity.Users;
-import com.ces.Village.pojo.entity.Article;
-import com.ces.Village.constant.ArticleTypeConstant;
-import com.ces.Village.pojo.vo.ArticleListVo;
-
-import com.ces.Village.pojo.vo.ArticleVo;
-import com.ces.Village.service.*;
-import com.ces.Village.utils.ConvertUtil;
-import com.ces.Village.utils.RichTextUtils;
 import io.netty.util.internal.StringUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +37,7 @@ import java.util.Objects;
  * 文章
  */
 @Log4j2
-@Api(tags = "文章接口")
+@Tag(name = "文章接口")
 @RestController
 @RequestMapping("/api/article")
 // 使用构造器注入，代替字段注入
@@ -56,7 +52,7 @@ public class ArticleController {
      * DELETE /api/article/delete : 删除文章或问题根据文章id
      */
     @LoginRequired
-    @ApiOperation(value = "删除文章或问题根据文章id")
+    @Operation(summary  = "删除文章或问题根据文章id")
     @DeleteMapping(value = "/delete")
     public R<?> deleteArticle(@RequestParam("article_id") String articleId) {
         log.info("删除文章或问题根据文章id：{}", articleId);
@@ -90,7 +86,7 @@ public class ArticleController {
      * GET /api/article/details : 查询文章或问题详情根据文章id
      * 问题相比文章要多返回一个评论数据
      */
-    @ApiOperation(value = "查询文章或问题详情根据文章id")
+    @Operation(summary  = "查询文章或问题详情根据文章id")
     @GetMapping(value = "/details")
     public R<Article> getArticleDetails(@RequestParam("article_id") String articleId) {
         log.info("查询文章或问题详情根据文章id：{}", articleId);
@@ -112,7 +108,7 @@ public class ArticleController {
     /**
      * GET /api/article/list : 查询所有文章和问题列表
      */
-    @ApiOperation(value = "查询所有文章和问题列表")
+    @Operation(summary  = "查询所有文章和问题列表")
     @GetMapping(value = "/list")
     public R<ArticleListVo> getArticleList(
             @RequestParam(value = "page", required = false) Integer currentPage,
@@ -149,7 +145,7 @@ public class ArticleController {
      * @param articleType 文章分类：1、乡村振兴2、特产介绍3、农业技术4、问题答疑 (required)
      * @param currentPage 第几页 (optional)
      */
-    @ApiOperation(value = "查询文章和问题列表（根据文章分类）")
+    @Operation(summary  = "查询文章和问题列表（根据文章分类）")
     @GetMapping(value = "/listbytype")
     public R<ArticleListVo> getArticleListByType(
             @RequestParam("article_type") Integer articleType,
@@ -188,7 +184,7 @@ public class ArticleController {
      * @param currentPage (optional)
      */
     @LoginRequired
-    @ApiOperation(value = "查询我发布的问题列表")
+    @Operation(summary  = "查询我发布的问题列表")
     @GetMapping(value = "/mypublish")
     public R<ArticleListVo> getArticleMyPublish(
             @RequestParam(value = "page", required = false) Integer currentPage,
@@ -219,7 +215,7 @@ public class ArticleController {
      * 后台生成文章id
      */
     @LoginRequired
-    @ApiOperation(value = "发布文章（或问题）")
+    @Operation(summary  = "发布文章（或问题）")
     @PostMapping(value = "/publish")
     public R<?> publishArticle(@RequestBody() ArticleDTO articleDTO) {
         log.info("发布文章（或问题）：{}", articleDTO);
@@ -257,7 +253,7 @@ public class ArticleController {
      * 自己发布的问题（非文章），只有自己才能修改，其他人（包括管理员）不能修改
      */
     @LoginRequired
-    @ApiOperation(value = "修改文章（或问题）")
+    @Operation(summary  = "修改文章（或问题）")
     @PutMapping(value = "/update")
     public R<?> updateArticle(@Valid @RequestBody() ArticleDTO articleDTO) {
         log.info("修改文章（或问题）：{}", articleDTO);

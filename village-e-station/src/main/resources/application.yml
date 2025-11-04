@@ -6,32 +6,47 @@
 #
 #
 
+application:
+  version: @project.version@
+  formatted-version: @project.version@
+  
 server:
   http.port: 7270 # http端口 勿删
   port: 7271 # https端口
   ssl:
     # ssl证书存放的位置
-    key-store: classpath:xxxxxxxxxx.com.jks
+    key-store: classpath:villageestation.com.jks
     # 证书别名
-    key-alias: xxxxxxxxxx.com
-    # 证书格式 P12
+    key-alias: villageestation.com
+    # 证书格式 P12  
     key-store-type: JKS
-    key-store-password: xxxxxxxxxx
+    key-store-password: xxxxxxxxxxxxx
 
 spring:
   main:
     lazy-initialization: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://xxxxxxxxxx:3306/countryside
-    username: xxxxxxxxxx
-    password: xxxxxxxxxx
-  redis:
-    host: xxxxxxxxxx # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 6379 # Redis服务器连接端口
-    password: xxxxxxxxxx # Redis服务器连接密码（默认为空）
-    timeout: 3000
+    url: jdbc:mysql://localhost:3306/countryside?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+  data:
+    redis:
+      host: 127.0.0.1
+      database: 0 # Redis数据库索引（默认为0）
+      port: 6379 # Redis服务器连接端口
+      password: 123456 # Redis服务器连接密码（默认为空）
+      timeout: 3000
+
+springdoc:
+  api-docs:
+    enabled: true # 开启OpenApi接口
+    path: /v3/api-docs  # 自定义路径，默认为 "/v3/api-docs"
+  swagger-ui:
+    enabled: true # 开启swagger界面，依赖OpenApi，需要OpenApi同时开启
+    path: /swagger-ui/index.html # 自定义路径，默认为"/swagger-ui/index.html"
+  packages-to-scan: com.ces.village.controller # 扫描的包路径，默认为当前项目的包路径
+
 
 mybatis-plus:
   configuration:
@@ -48,7 +63,7 @@ mybatis-plus:
 ces:
   jwt:
     # 设置jwt签名加密时使用的秘钥
-    secret-key: suzelun
+    secret-key: xxxxxxxxxxx
     # 设置jwt过期时间 15天
     token-ttl: 1296000000
     # 设置前端传递过来的令牌名称
@@ -56,15 +71,15 @@ ces:
 
   alikey:
     # 阿里云子账户key 注意给oss、短信、内容审核的权限
-    access-key-id: xxxxxxxxxx
-    access-key-secret: xxxxxxxxxx
+    access-key-id: xxxxxxxxxxxxxxxx
+    access-key-secret: xxxxxxxxxxxxxx
 
   # 阿里云oss配置
   # https://help.aliyun.com/zh/oss/developer-reference/use-temporary-access-credentials-provided-by-sts-to-access-oss
   alioss:
-    bucket-name: xxxxxxxxxx
-    role-arn: acs:ram::xxxxxxxxxx
-    role-session-name: xxxxxxxxxx
+    bucket-name: villageestation
+    role-arn: xxxxxxxxxxxxxx
+    role-session-name: RamOss
     end-point: oss-cn-guangzhou.aliyuncs.com # 用于上传、下载、删除、文件
     sts-end-point: sts.cn-guangzhou.aliyuncs.com # 用于获取sts令牌
 
@@ -76,44 +91,42 @@ ces:
 wechat:
   api:
     # 下面的是旧版APPID
-    appId: xxxxxxxxxx
+    appId: xxxxxxxxxxxxxx
     # 小程序密钥（旧版APPID）
-    appSecret: xxxxxxxxxx
+    appSecret: xxxxxxxxxxxxxx
 
   # 微信支付配置
   pay:
-    # 小程序APPID
-    appId: xxxxxxxxxx
-    # 小程序密钥（旧版APPID）
-    appSecret: xxxxxxxxxx
+    # 小程序ID
+    #appId: xxxxxxxxxxxxxx
     # 商户号
-    mchId: xxxxxxxxxx
+    mchId: xxxxxxxxxxxxxx
     # 商户API证书的证书序列号
-    mch-serial-no: xxxxxxxxxx
+    mch-serial-no: xxxxxxxxxxxxxx
     # apiv3密钥
-    apiV3Key: xxxxxxxxxx
+    apiV3Key: xxxxxxxxxxxxxx
     # 微信支付API证书
     weChatPayCertFilePath: classpath:wx/apiclient_cert.p12
     # 证书私钥，不需要加 classpath:
     private-key-file-path: wx/apiclient_key.pem
     # 支付成功回调通知
-    notifyUrl: https://xxxxxxxxxx.com:7271/api/wxpay/notify
+    notifyUrl: https://xxxxxxxxxxxxxx.com:7271/api/wxpay/notify
     # 退款回调通知
-    refundNotifyUrl: https://xxxxxxxxxx.com:7271/api/wxpay/notify/refund
+    refundNotifyUrl: https://xxxxxxxxxxxxxx.com:7271/api/wxpay/notify/refund
 
   # 消息推送配置
   push:
     # 推送token
-    msg-post-token: xxxxxxxxxx
+    msg-post-token: xxxxxxxxxxxxxx
     # 推送，用于解密消息的AesKey
-    msg-post-a-eSKey: xxxxxxxxxx
+    msg-post-a-eSKey: xxxxxxxxxxxxxx
     #  退款申请通知 模板ID
-    msg-refund-id: xxxxxxxxxx
+    msg-refund-id: xxxxxxxxxxxxxx
     # 订单发货提醒 模板ID
-    msg-send-out-goods-id: xxxxxxxxxx
+    msg-send-out-goods-id: xxxxxxxxxxxxxx-xxxxxxxxxxxxxx
     # 评论删除提醒 模板ID
-    msg-comment-deletion-id: xxxxxxxxxx
+    msg-comment-deletion-id: xxxxxxxxxxxxxx-xxxxxxxxxxxxxx-xxxxxxxxxxxxxx
     # 审核结果通知 模板ID
-    msg-review-id: xxxxxxxxxx
+    msg-review-id: xxxxxxxxxxxxxx-xxxxxxxxxxxxxx
     # 支付成功通知 模板ID
-    msg-payment-success-id: xxxxxxxxxx
+    msg-payment-success-id: xxxxxxxxxxxxxx

@@ -1,9 +1,9 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.mapper.ServiceProtocolMapper;
-import com.ces.Village.pojo.entity.ServiceProtocol;
-import com.ces.Village.service.ServiceProtocolService;
+import com.ces.village.mapper.ServiceProtocolMapper;
+import com.ces.village.pojo.entity.ServiceProtocol;
+import com.ces.village.service.ServiceProtocolService;
 import org.springframework.stereotype.Service;
 
 /**

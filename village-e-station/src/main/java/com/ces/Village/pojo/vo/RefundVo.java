@@ -1,4 +1,4 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

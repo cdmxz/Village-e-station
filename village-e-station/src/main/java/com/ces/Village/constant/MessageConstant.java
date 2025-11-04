@@ -1,4 +1,4 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 /**
  * 信息提示常量类

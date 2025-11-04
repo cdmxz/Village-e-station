@@ -1,14 +1,14 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import com.ces.Village.pojo.entity.EnterpriseHires;
-import com.ces.Village.pojo.entity.GigHires;
-import com.ces.Village.pojo.entity.GigJobHunting;
+import com.ces.village.pojo.entity.EnterpriseHires;
+import com.ces.village.pojo.entity.GigHires;
+import com.ces.village.pojo.entity.GigJobHunting;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 @Data
-@ApiModel(description = "添加招聘信息")
+@Schema(description = "添加招聘信息")
 public class JobAddDTO {
     /**
      * 招聘类型

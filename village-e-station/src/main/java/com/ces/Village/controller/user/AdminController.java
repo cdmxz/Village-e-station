@@ -1,41 +1,39 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.UserTypeConstant;
-import com.ces.Village.pojo.dto.AdminLoginDTO;
-import com.ces.Village.pojo.dto.AdminRegisterDTO;
-import com.ces.Village.pojo.dto.ResetPwdDTO;
-import com.ces.Village.pojo.dto.SMSDTO;
-import com.ces.Village.pojo.entity.Admin;
-import com.ces.Village.pojo.entity.Users;
-import com.ces.Village.pojo.vo.LoginVO;
-import com.ces.Village.pojo.vo.UserInformationVO;
-import com.ces.Village.redis.SMSObject;
-import com.ces.Village.service.AdminService;
-import com.ces.Village.service.LoginService;
-import com.ces.Village.service.UsersService;
-import com.ces.Village.utils.AliSMSUtil;
-import com.ces.Village.utils.ConvertUtil;
-import com.ces.Village.utils.ValidateCodeUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.UserTypeConstant;
+import com.ces.village.pojo.dto.AdminLoginDTO;
+import com.ces.village.pojo.dto.AdminRegisterDTO;
+import com.ces.village.pojo.dto.ResetPwdDTO;
+import com.ces.village.pojo.dto.SMSDTO;
+import com.ces.village.pojo.entity.Admin;
+import com.ces.village.pojo.entity.Users;
+import com.ces.village.pojo.vo.LoginVO;
+import com.ces.village.pojo.vo.UserInformationVO;
+import com.ces.village.redis.SMSObject;
+import com.ces.village.service.AdminService;
+import com.ces.village.service.LoginService;
+import com.ces.village.service.UsersService;
+import com.ces.village.utils.AliSMSUtil;
+import com.ces.village.utils.ConvertUtil;
+import com.ces.village.utils.ValidateCodeUtils;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpHeaders;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  * 管理员接口
  */
 @Log4j2
-@Api(tags = "管理员接口")
+@Tag(name = "管理员接口")
 @RestController
 @SessionAttributes("code")
 @RequestMapping("/api/user/admin")
@@ -121,18 +119,26 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    @ApiOperation("管理员用户端登陆")
+    @Operation(summary = "管理员用户端登陆")
     public R<LoginVO> login(HttpServletRequest request,
                             @RequestBody AdminLoginDTO adminLoginDTO) {
         log.info("管理员用户端登陆：{}", adminLoginDTO);
         // 校验验证码
         String captcha = adminLoginDTO.getCaptcha();
-        String key = request.getRemoteHost();
-        String codeInRedis = (String) redisTemplate.opsForValue().get(key);
-        log.info("校验验证码，rediskey=" + key);
-        if (codeInRedis == null || !codeInRedis.equalsIgnoreCase(captcha)) {
+        HttpSession session = request.getSession();
+        String codeInSession = (String) session.getAttribute("captcha");
+        Long time = (Long) session.getAttribute("captchaTime");
+        if (codeInSession == null || time == null ||
+                (System.currentTimeMillis() - time) > 120000 ||
+                !codeInSession.equalsIgnoreCase(adminLoginDTO.getCaptcha())) {
+            log.info("校验验证码失败");
             return R.error(ErrorCodeEnum.CAPTCHA_ERROR);
         }
+        log.info("校验验证码成功");
+        // 从session中移除验证码
+        session.removeAttribute("captcha");
+        session.removeAttribute("captchaTime");
+
         return adminService.login(adminLoginDTO);
     }
 
@@ -140,7 +146,7 @@ public class AdminController {
      * 生成验证码
      */
     @GetMapping(value = "/captcha")
-    @ApiOperation("生成验证码")
+    @Operation(summary = "生成验证码")
     public void getCaptchaImg(HttpServletRequest request, HttpServletResponse response) {
         try {
             response.setContentType("image/png");//设置相应类型,告诉浏览器输出的内容为图片
@@ -150,11 +156,12 @@ public class AdminController {
             ValidateCodeUtils randomValidateCode = new ValidateCodeUtils();
             // 生成验证码 并 输出验证码图片到客户端
             String code = randomValidateCode.getRandomCodeImage(response);
-            // 将生成的随机字符串保存到redis中
-            String key = request.getRemoteHost();
-            int expireTime = 120; // 设置验证码过期时间，单位为秒
-            redisTemplate.opsForValue().set(key, code, expireTime, TimeUnit.SECONDS);
-            log.info("生成验证码，rediskey=" + key);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("captcha", code);
+            session.setAttribute("captchaTime", System.currentTimeMillis());
+
+            log.info("生成验证码，captcha=" + code);
         } catch (Exception e) {
             log.error("获取图片验证码失败", e);
         }
@@ -167,7 +174,7 @@ public class AdminController {
      */
     @LoginRequired
     @PostMapping("/logout")
-    @ApiOperation("退出登陆")
+    @Operation(summary = "退出登陆")
     public R<String> logout(@RequestParam(value = HttpHeaders.AUTHORIZATION) String userToken) {
         return R.success();
     }
@@ -206,7 +213,7 @@ public class AdminController {
         if (admin == null) {
             return R.error(ErrorCodeEnum.USER_NOT_EXIST);
         }
-        if (Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
+        if (redisTemplate.hasKey(key)) {
             // 判断短信发送时间间隔是否太短
             SMSObject smsObject = (SMSObject) redisTemplate.opsForValue().get(key);
             long current = System.currentTimeMillis();
@@ -240,7 +247,7 @@ public class AdminController {
     public R<?> resetPwd(@Valid @RequestBody ResetPwdDTO resetPwdDTO) {
         String key = resetPwdDTO.getPhone() + "SMS";
         // 判断验证码是否存在redis中，不存在表示验证码过期
-        if (Boolean.FALSE.equals(redisTemplate.hasKey(key))) {
+        if (!redisTemplate.hasKey(key)) {
             return R.error(ErrorCodeEnum.CAPTCHA_EXPIRED);
         }
         SMSObject smsObject = (SMSObject) redisTemplate.opsForValue().get(key);

@@ -1,7 +1,7 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
-import com.ces.Village.pojo.entity.GoodsCategory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ces.village.pojo.entity.GoodsCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

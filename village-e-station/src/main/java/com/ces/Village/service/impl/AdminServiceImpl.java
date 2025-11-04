@@ -1,25 +1,25 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.mapper.AdminMapper;
-import com.ces.Village.pojo.dto.AdminLoginDTO;
-import com.ces.Village.pojo.dto.UserInformationDTO;
-import com.ces.Village.pojo.entity.Admin;
-import com.ces.Village.pojo.vo.LoginVO;
-import com.ces.Village.service.AdminService;
-import com.ces.Village.service.OssService;
-import com.ces.Village.utils.WxApiUtil;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.AdminMapper;
+import com.ces.village.pojo.dto.AdminLoginDTO;
+import com.ces.village.pojo.dto.UserInformationDTO;
+import com.ces.village.pojo.entity.Admin;
+import com.ces.village.pojo.vo.LoginVO;
+import com.ces.village.service.AdminService;
+import com.ces.village.service.OssService;
+import com.ces.village.utils.StringUtils;
+import com.ces.village.utils.WxApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-import com.ces.Village.utils.StringUtils;
 
 import java.time.LocalDateTime;
 

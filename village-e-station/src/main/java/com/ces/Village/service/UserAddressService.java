@@ -1,8 +1,8 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
-import com.ces.Village.pojo.entity.UserAddress;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ces.Village.pojo.vo.UserAddressVO;
+import com.ces.village.pojo.entity.UserAddress;
+import com.ces.village.pojo.vo.UserAddressVO;
 
 import java.util.List;
 

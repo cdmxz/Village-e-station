@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
  * 富文本支持
  */
 public class RichTextUtils {
-    private static Pattern p_image= Pattern.compile("<img.*src\\s*=\\s*(.*?)[^>]*?>",Pattern.CASE_INSENSITIVE);
-    private static Pattern r_image=Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)");
+    private static final Pattern p_image= Pattern.compile("<img.*src\\s*=\\s*(.*?)[^>]*?>",Pattern.CASE_INSENSITIVE);
+    private static final Pattern r_image=Pattern.compile("src\\s*=\\s*\"?(.*?)(\"|>|\\s+)");
 
 
     /**

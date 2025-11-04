@@ -1,24 +1,23 @@
-package com.ces.Village.interceptor;
+package com.ces.village.interceptor;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.properties.JwtProperties;
-import com.ces.Village.constant.JwtClaimsConstant;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.utils.JsonConvertUtil;
-import com.ces.Village.utils.JwtUtil;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.JwtClaimsConstant;
+import com.ces.village.properties.JwtProperties;
+import com.ces.village.utils.JsonConvertUtil;
+import com.ces.village.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.netty.util.internal.StringUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -39,11 +38,6 @@ public class JwtTokenUserInterceptor implements HandlerInterceptor {
     /**
      * 校验jwt
      *
-     * @param request
-     * @param response
-     * @param handler
-     * @return
-     * @throws Exception
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         // 判断当前拦截到的是Controller的方法还是其他资源

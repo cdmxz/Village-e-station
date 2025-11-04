@@ -1,18 +1,18 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.entity.UserAddress;
-import com.ces.Village.pojo.vo.UserAddressVO;
-import com.ces.Village.service.UserAddressService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.entity.UserAddress;
+import com.ces.village.pojo.vo.UserAddressVO;
+import com.ces.village.service.UserAddressService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +31,7 @@ import java.util.Map;
 @Log4j2
 @RestController
 @RequestMapping("/api/address")
-@Api(tags = "移动端地址簿接口")
+@Tag(name = "移动端地址簿接口")
 public class UserAddressController {
     @Autowired
     private UserAddressService userAddressService;
@@ -41,7 +41,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @PostMapping("/add")
-    @ApiOperation("新增地址")
+    @Operation(summary = "新增地址")
     public R<?> save(@RequestBody UserAddress userAddress) {
         log.info("新增地址");
         CurrentUser currentUser = BaseContext.getCurrentUser();
@@ -58,7 +58,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @PutMapping("/updatedefault")
-    @ApiOperation("修改默认地址")
+    @Operation(summary = "修改默认地址")
     public R<?> setDefault(@RequestBody UserAddress userAddress) {
         userAddressService.setDefault(userAddress);
         return R.success();
@@ -72,7 +72,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @PutMapping("/updateaddress")
-    @ApiOperation("修改收货地址")
+    @Operation(summary = "修改收货地址")
     public R<?> update(@RequestBody UserAddress userAddress) {
         ////SQL:update user_address set  where id = ?
         userAddressService.updateById(userAddress);
@@ -84,7 +84,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @GetMapping("/default")
-    @ApiOperation("查询默认地址")
+    @Operation(summary = "查询默认地址")
     public R<?> getDefault() {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         Long userId = currentUser.getId();
@@ -102,7 +102,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @GetMapping("/list")
-    @ApiOperation("查询收货地址列表")
+    @Operation(summary = "查询收货地址列表")
     public R<?> list(UserAddress userAddress) {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         Long userId = currentUser.getId();
@@ -120,7 +120,7 @@ public class UserAddressController {
      */
     @LoginRequired
     @DeleteMapping("/delete")
-    @ApiOperation("根据id删除地址")
+    @Operation(summary = "根据id删除地址")
     public R<UserAddress> deleteById(@RequestParam(value = "address_id") String addressId) {
         log.info("删除地址...");
         UserAddress address = userAddressService.getById(addressId);

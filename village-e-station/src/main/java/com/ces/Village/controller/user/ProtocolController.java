@@ -1,11 +1,11 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
-import com.ces.Village.common.R;
-import com.ces.Village.pojo.entity.PrivacyProtocol;
-import com.ces.Village.pojo.entity.ServiceProtocol;
-import com.ces.Village.service.PrivacyProtocolService;
-import com.ces.Village.service.ServiceProtocolService;
-import io.swagger.annotations.Api;
+import com.ces.village.common.R;
+import com.ces.village.pojo.entity.PrivacyProtocol;
+import com.ces.village.pojo.entity.ServiceProtocol;
+import com.ces.village.service.PrivacyProtocolService;
+import com.ces.village.service.ServiceProtocolService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2023-12-11
  */
 @Log4j2
-@Api(tags = "服务协议、隐私协议接口")
+@Tag(name = "服务协议、隐私协议接口")
 @RestController
 @RequestMapping("/api/protocol")
 public class ProtocolController {

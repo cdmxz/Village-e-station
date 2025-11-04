@@ -1,25 +1,23 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.entity.GoodsCategory;
-import com.ces.Village.service.GoodsCategoryService;
-import com.ces.Village.utils.StringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.entity.GoodsCategory;
+import com.ces.village.service.GoodsCategoryService;
+import com.ces.village.utils.StringUtils;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Log4j2
-@Api(tags = "商品分类接口")
+@Tag(name = "商品分类接口")
 @RestController
 @RequestMapping("/api/good/category")
 @RequiredArgsConstructor
@@ -33,7 +31,7 @@ public class GoodsCategoryController {
      */
     @LoginRequired(requireAdmin = true)
     @DeleteMapping("/delete")
-    @ApiOperation("删除商品分类")
+    @Operation(summary = "删除商品分类")
     public R<?> delete(@RequestParam("category_id") String id) {
         log.info("删除商品分类，id={}", id);
         GoodsCategory goodsCategory = goodsCategoryService.getById(id);
@@ -52,7 +50,7 @@ public class GoodsCategoryController {
      */
     @LoginRequired(requireAdmin = true)
     @PostMapping("/add")
-    @ApiOperation("增加商品分类")
+    @Operation(summary = "增加商品分类")
     public R<?> add(@RequestBody GoodsCategory param) {
         log.info("增加商品分类，name={}", param.getName());
         if (StringUtils.isEmptyOrNull(param.getName())) {
@@ -75,7 +73,7 @@ public class GoodsCategoryController {
      * 查询商品分类
      */
     @GetMapping("/")
-    @ApiOperation("查询商品分类")
+    @Operation(summary = "查询商品分类")
     public R<?> query() {
         List<GoodsCategory> list = goodsCategoryService.list();
         return R.success(list);
@@ -86,7 +84,7 @@ public class GoodsCategoryController {
      */
     @LoginRequired(requireAdmin = true)
     @PutMapping("/update")
-    @ApiOperation("修改商品分类")
+    @Operation(summary = "修改商品分类")
     public R<?> update(@RequestBody GoodsCategory param) {
         log.info("增加商品分类，name={}", param.getName());
         if (StringUtils.isEmptyOrNull(param.getName())) {

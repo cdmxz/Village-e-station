@@ -1,20 +1,14 @@
-package com.ces.Village.task;
+package com.ces.village.task;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ces.Village.constant.OrderStatusConstant;
-import com.ces.Village.constant.RefundApplyConstant;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.pojo.entity.Refund;
-import com.ces.Village.service.OrdersService;
+import com.ces.village.constant.OrderStatusConstant;
+import com.ces.village.pojo.entity.Orders;
+import com.ces.village.service.OrdersService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 

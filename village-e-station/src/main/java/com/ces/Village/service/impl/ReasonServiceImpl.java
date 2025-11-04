@@ -1,9 +1,9 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
-import com.ces.Village.mapper.ReasonMapper;
-import com.ces.Village.pojo.entity.Reason;
-import com.ces.Village.service.ReasonService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ces.village.mapper.ReasonMapper;
+import com.ces.village.pojo.entity.Reason;
+import com.ces.village.service.ReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

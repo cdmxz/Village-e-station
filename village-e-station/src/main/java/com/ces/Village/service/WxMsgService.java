@@ -1,10 +1,10 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
-import com.ces.Village.pojo.dto.ReviewPushDTO;
-import com.ces.Village.pojo.dto.WxMediaCheckPushResponse;
-import com.ces.Village.pojo.entity.Comments;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.pojo.entity.Refund;
+import com.ces.village.pojo.dto.ReviewPushDTO;
+import com.ces.village.pojo.dto.WxMediaCheckPushResponse;
+import com.ces.village.pojo.entity.Comments;
+import com.ces.village.pojo.entity.Orders;
+import com.ces.village.pojo.entity.Refund;
 
 /**
  * <p>

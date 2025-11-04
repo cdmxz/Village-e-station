@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ces.Village.mapper.UsersMapper">
+<mapper namespace="com.ces.village.mapper.UsersMapper">
 
-    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Users">
+    <resultMap id="BaseResultMap" type="com.ces.village.pojo.entity.Users">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="openId" column="openid" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -17,7 +17,7 @@
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <update id="updateUserInfo" parameterType="com.ces.Village.pojo.entity.Users">
+    <update id="updateUserInfo" parameterType="com.ces.village.pojo.entity.Users">
            update users
            <set>
                 <if test="name != null and name != ''">name = #{name},</if>

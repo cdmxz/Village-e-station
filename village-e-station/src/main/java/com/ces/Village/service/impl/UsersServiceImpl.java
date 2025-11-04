@@ -1,20 +1,19 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.dto.UserInformationDTO;
-import com.ces.Village.pojo.entity.Users;
-import com.ces.Village.mapper.UsersMapper;
-import com.ces.Village.service.OssService;
-import com.ces.Village.service.UsersService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.utils.StringUtils;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.UsersMapper;
+import com.ces.village.pojo.dto.UserInformationDTO;
+import com.ces.village.pojo.entity.Users;
+import com.ces.village.service.OssService;
+import com.ces.village.service.UsersService;
+import com.ces.village.utils.StringUtils;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

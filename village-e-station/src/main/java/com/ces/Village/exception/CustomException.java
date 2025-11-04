@@ -1,6 +1,6 @@
-package com.ces.Village.exception;
+package com.ces.village.exception;
 
-import com.ces.Village.constant.ErrorCodeEnum;
+import com.ces.village.constant.ErrorCodeEnum;
 import lombok.Getter;
 
 /**

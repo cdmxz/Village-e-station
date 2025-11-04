@@ -1,17 +1,17 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.ces.Village.pojo.dto.*;
-import com.ces.Village.properties.WxApiProperties;
+import com.ces.village.pojo.dto.*;
+import com.ces.village.properties.WxApiProperties;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -158,7 +158,7 @@ public class WxApiUtil {
         try {
             String accessToken = getAccessToken();
             String url = wxApiProperties.getMsgPushUrl() + "?access_token=" + accessToken;
-            URL apiUrl = new URL(url);
+            URL apiUrl =  new URI(url).toURL();
             HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
@@ -184,9 +184,9 @@ public class WxApiUtil {
             connection.disconnect();
             WxMsgPushResponse pushResponse = JSON.parseObject(response.toString(), WxMsgPushResponse.class);
             return pushResponse;
-        } catch (IOException e) {
+        } catch (Exception e) {
             // 异常处理逻辑
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }

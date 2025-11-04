@@ -1,8 +1,8 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ces.Village.pojo.entity.Goods;
-import com.ces.Village.pojo.vo.SurplusVO;
+import com.ces.village.pojo.entity.Goods;
+import com.ces.village.pojo.vo.SurplusVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

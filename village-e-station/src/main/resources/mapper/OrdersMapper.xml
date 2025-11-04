@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ces.Village.mapper.OrdersMapper">
+<mapper namespace="com.ces.village.mapper.OrdersMapper">
 
     <!--    根据订单状态查询订单列表-->
-    <resultMap id="OrderList" type="com.ces.Village.pojo.entity.Orders">
+    <resultMap id="OrderList" type="com.ces.village.pojo.entity.Orders">
         <id property="orderId" column="id" jdbcType="BIGINT"/>
         <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
         <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
@@ -11,7 +11,7 @@
         <result property="orderTime" column="order_time"/>
         <result property="expireTime" column="expire_time"/>
 
-        <collection property="orderDetails" ofType="com.ces.Village.pojo.entity.OrderDetail">
+        <collection property="orderDetails" ofType="com.ces.village.pojo.entity.OrderDetail">
             <id property="id" column="d_id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>
@@ -66,7 +66,7 @@
 
 
     <!--    查询订单详情-->
-    <resultMap id="OrderDetails" type="com.ces.Village.pojo.entity.Orders">
+    <resultMap id="OrderDetails" type="com.ces.village.pojo.entity.Orders">
         <id property="orderId" column="id" jdbcType="BIGINT"/>
         <result property="orderNo" column="order_no" jdbcType="VARCHAR"/>
         <result property="receiveInformation" column="receive_information" jdbcType="VARCHAR"/>
@@ -82,7 +82,7 @@
         <result property="receiveTime" column="receive_time" jdbcType="TIMESTAMP"/>
         <result property="expireTime" column="expire_time"/>
 
-        <collection property="orderDetails" ofType="com.ces.Village.pojo.entity.OrderDetail">
+        <collection property="orderDetails" ofType="com.ces.village.pojo.entity.OrderDetail">
             <id property="id" column="d_id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>

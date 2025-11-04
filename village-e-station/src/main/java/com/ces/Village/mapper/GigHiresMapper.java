@@ -1,8 +1,8 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.entity.GigHires;
+import com.ces.village.pojo.entity.GigHires;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

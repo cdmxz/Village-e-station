@@ -1,13 +1,12 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.constant.JwtClaimsConstant;
-import com.ces.Village.pojo.dto.WxOpenIdResponse;
-import com.ces.Village.properties.JwtProperties;
-import com.ces.Village.service.LoginService;
-import com.ces.Village.utils.JwtUtil;
-import com.ces.Village.utils.WxApiUtil;
-import org.apache.el.parser.Token;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.constant.JwtClaimsConstant;
+import com.ces.village.pojo.dto.WxOpenIdResponse;
+import com.ces.village.properties.JwtProperties;
+import com.ces.village.service.LoginService;
+import com.ces.village.utils.JwtUtil;
+import com.ces.village.utils.WxApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

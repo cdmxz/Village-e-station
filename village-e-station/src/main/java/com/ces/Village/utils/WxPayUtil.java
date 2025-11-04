@@ -1,9 +1,8 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 
 import com.alibaba.fastjson2.JSONObject;
-import com.ces.Village.properties.WxApiProperties;
-import com.ces.Village.properties.WxPayProperties;
+import com.ces.village.properties.WxPayProperties;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
 import com.wechat.pay.java.core.Config;
 import com.wechat.pay.java.core.RSAAutoCertificateConfig;
@@ -16,13 +15,13 @@ import com.wechat.pay.java.service.refund.RefundService;
 import com.wechat.pay.java.service.refund.model.CreateRequest;
 import com.wechat.pay.java.service.refund.model.Refund;
 import com.wechat.pay.java.service.refund.model.RefundNotification;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -114,7 +113,7 @@ public class WxPayUtil {
             String prepayId = jsapiPrepay(orderNum, total, description, openid);
             // 签名，构造数据给小程序端
             String timeStamp = String.valueOf(System.currentTimeMillis() / 1000);
-            String nonceStr = RandomStringUtils.randomNumeric(32);
+            String nonceStr = RandomStringUtils.secure().nextNumeric(32) ;
             ArrayList<Object> list = new ArrayList<>();
             list.add(wxPayProperties.getKeys().getAppid());
             list.add(timeStamp);

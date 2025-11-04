@@ -1,22 +1,22 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.dto.GoodsDTO;
-import com.ces.Village.pojo.entity.Goods;
-import com.ces.Village.pojo.vo.GoodsListVO;
-import com.ces.Village.pojo.vo.GoodsDetailVO;
-import com.ces.Village.pojo.vo.SurplusVO;
-import com.ces.Village.service.GoodsService;
-import com.ces.Village.service.OssService;
-import com.ces.Village.utils.ConvertUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.dto.GoodsDTO;
+import com.ces.village.pojo.entity.Goods;
+import com.ces.village.pojo.vo.GoodsDetailVO;
+import com.ces.village.pojo.vo.GoodsListVO;
+import com.ces.village.pojo.vo.SurplusVO;
+import com.ces.village.service.GoodsService;
+import com.ces.village.service.OssService;
+import com.ces.village.utils.ConvertUtil;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +28,7 @@ import java.util.Map;
  * 商品信息表
  */
 @Log4j2
-@Api(tags = "商品接口")
+@Tag(name = "商品接口")
 @RestController
 @RequestMapping("/api/good")
 public class GoodsController {
@@ -44,7 +44,7 @@ public class GoodsController {
      */
     @LoginRequired(requireAdmin = true)
     @PostMapping("/add")
-    @ApiOperation("添加商品")
+    @Operation(summary = "添加商品")
     public R<Goods> add(@RequestBody GoodsDTO goodsDTO) {
         log.info("添加商品：{}", goodsDTO);
         goodsService.addGood(goodsDTO);
@@ -59,7 +59,7 @@ public class GoodsController {
      */
     @LoginRequired(requireAdmin = true)
     @DeleteMapping("/delete")
-    @ApiOperation("删除商品")
+    @Operation(summary = "删除商品")
     public R<Goods> delete(@RequestParam("good_id") Long goodsId) {
         log.info("删除商品成功...");
         Goods goods = goodsService.getById(goodsId);
@@ -80,7 +80,7 @@ public class GoodsController {
      */
     @LoginRequired(requireAdmin = true)
     @PutMapping("/update")
-    @ApiOperation("修改商品")
+    @Operation(summary = "修改商品")
     public R<Goods> update(@RequestBody GoodsDTO goods) {
         log.info("修改商品：{}", goods);
         goodsService.updateInfo(goods);
@@ -98,7 +98,7 @@ public class GoodsController {
      */
     @LoginRequired(requireAdmin = true)
     @GetMapping("/admin/list")
-    @ApiOperation("查询所有的商品数据 管理员")
+    @Operation(summary = "查询所有的商品数据 管理员")
     public R<?> listAd(@RequestParam("page") Integer currentPage,
                        @RequestParam(value = "keyword", required = false) String keyword,
                        @RequestParam(value = "pricedesc", required = false) Integer priceDesc,
@@ -124,7 +124,7 @@ public class GoodsController {
      * @return 用户返回 销售状态的商品
      */
     @GetMapping("/list")
-    @ApiOperation("查询所有的商品数据")
+    @Operation(summary = "查询所有的商品数据")
     public R<?> list(@RequestParam("page") Integer currentPage,
                      @RequestParam(value = "keyword", required = false) String keyword,
                      @RequestParam(value = "pricedesc", required = false) Integer priceDesc,
@@ -151,7 +151,7 @@ public class GoodsController {
      */
     @LoginRequired(requireAdmin = true)
     @GetMapping("/admin/listbytype")
-    @ApiOperation("根据分类查询商品列表 管理员")
+    @Operation(summary = "根据分类查询商品列表 管理员")
     public R<Map<String, Object>> listByTypeAd(@RequestParam("page") Integer currentPage,
                                                @RequestParam("category_id") Long categoryId,
                                                @RequestParam(value = "keyword", required = false) String keyword,
@@ -177,7 +177,7 @@ public class GoodsController {
      * @return 返回所有状态的商品
      */
     @GetMapping("/listbytype")
-    @ApiOperation("根据分类查询商品列表 用户")
+    @Operation(summary = "根据分类查询商品列表 用户")
     public R<Map<String, Object>> listByType(@RequestParam("page") Integer currentPage,
                                              @RequestParam("category_id") Long categoryId,
                                              @RequestParam(value = "keyword", required = false) String keyword,
@@ -199,7 +199,7 @@ public class GoodsController {
      * @return
      */
     @GetMapping("/surplus")
-    @ApiOperation(value = "查看商品剩余库存")
+    @Operation(summary  = "查看商品剩余库存")
     public R<?> surplus(@RequestParam("good_id") Long goodsId) {
         List<SurplusVO> surplusVOList = goodsService.getsurplus(goodsId);
         return R.success(surplusVOList);
@@ -212,7 +212,7 @@ public class GoodsController {
      * @return
      */
     @GetMapping("/details")
-    @ApiOperation("查看商品详情")
+    @Operation(summary = "查看商品详情")
     public R<GoodsDetailVO> details(@RequestParam("good_id") Long goodsId) {
         log.info("商品详情：{}", goodsId);
         GoodsDetailVO detail = goodsService.detail(goodsId);

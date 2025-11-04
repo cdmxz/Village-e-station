@@ -1,6 +1,6 @@
-//package com.ces.Village.controller.user;
+//package com.ces.village.controller.user;
 //
-//import com.ces.Village.common.R;
+//import com.ces.village.common.R;
 //import lombok.extern.log4j.Log4j2;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.web.error.ErrorAttributeOptions;
@@ -13,7 +13,7 @@
 //import org.springframework.web.context.request.ServletWebRequest;
 //import org.springframework.web.context.request.WebRequest;
 //
-//import javax.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletRequest;
 //import java.util.Map;
 //
 //@Log4j2
@@ -77,7 +77,7 @@
 //     * @return
 //     */
 //    public Integer getStatus(HttpServletRequest request) {
-//        Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
+//        Integer statusCode = (Integer) request.getAttribute("jakarta.servlet.error.status_code");
 //        if (statusCode == null) {
 //            return 500;
 //        }

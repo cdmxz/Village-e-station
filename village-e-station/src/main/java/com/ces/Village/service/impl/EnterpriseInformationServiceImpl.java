@@ -1,15 +1,13 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ces.Village.mapper.EnterpriseInformationMapper;
-import com.ces.Village.pojo.entity.EnterpriseInformation;
-import com.ces.Village.service.EnterpriseInformationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.service.OssService;
+import com.ces.village.mapper.EnterpriseInformationMapper;
+import com.ces.village.pojo.entity.EnterpriseInformation;
+import com.ces.village.service.EnterpriseInformationService;
+import com.ces.village.service.OssService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * <p>

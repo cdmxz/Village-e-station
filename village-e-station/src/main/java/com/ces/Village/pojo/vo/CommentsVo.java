@@ -1,8 +1,8 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Accessors(chain = true)
-@ApiModel(description = "评论列表")
+@Schema(description = "评论列表")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CommentsVo {
 

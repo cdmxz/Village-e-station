@@ -1,12 +1,12 @@
-package com.ces.Village.service.factory;
+package com.ces.village.service.factory;
 
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.JobTypeConstant;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.service.BaseJobService;
-import com.ces.Village.service.EnterpriseHiresJobService;
-import com.ces.Village.service.GigHiresJobService;
-import com.ces.Village.service.GigHuntingJobService;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.JobTypeConstant;
+import com.ces.village.exception.CustomException;
+import com.ces.village.service.BaseJobService;
+import com.ces.village.service.EnterpriseHiresJobService;
+import com.ces.village.service.GigHiresJobService;
+import com.ces.village.service.GigHuntingJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

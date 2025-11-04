@@ -1,4 +1,4 @@
-package com.ces.Village.common;
+package com.ces.village.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

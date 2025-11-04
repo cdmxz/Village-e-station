@@ -1,20 +1,17 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
-
-
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -28,70 +25,70 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("goods")
-@ApiModel(value = "Goods对象", description = "商品信息表")
+@Schema(name = "Goods对象", description = "商品信息表")
 public class Goods implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
+     @Schema(name = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     @JsonProperty("good_id")
     private Long id;
 
-    @ApiModelProperty(value = "商品名称")
+     @Schema(name = "商品名称")
     @JsonProperty("name")
     private String name;
 
-    @ApiModelProperty(value = "商品价格")
+     @Schema(name = "商品价格")
     @JsonProperty("price")
     private BigDecimal price;
 
-    @ApiModelProperty(value = "邮费")
+     @Schema(name = "邮费")
     @JsonProperty("postage")
     private BigDecimal postage;
 
-    @ApiModelProperty(value = "商品码")
+     @Schema(name = "商品码")
     @JsonProperty("code")
     private String code;
 
-    @ApiModelProperty(value = "略缩图url")
+     @Schema(name = "略缩图url")
     @JsonProperty("thumbnail_url")
     private String thumbnailUrl;
 
-    @ApiModelProperty(value = "轮播图urls")
+     @Schema(name = "轮播图urls")
     @JsonProperty("rotation_urls")
     private String rotationUrls;
 
-    @ApiModelProperty(value = "描述信息")
+     @Schema(name = "描述信息")
     @JsonProperty("description")
     private String description;
 
-    @ApiModelProperty(value = "是否删除")
+     @Schema(name = "是否删除")
     @JsonProperty("is_deleted")
     private Integer isDeleted;
 
-    @ApiModelProperty(value = "分类id")
+     @Schema(name = "分类id")
     @JsonProperty("category_id")
     private Integer categoryId;
     //1 在售 2 下架 3 库存不足
-    @ApiModelProperty(value = "销售状态")
+     @Schema(name = "销售状态")
     @JsonProperty("status")
     private Integer status;
 
-    @ApiModelProperty(value = "总货存")
+     @Schema(name = "总货存")
     @JsonProperty("stock")
     private Integer stock;
 
-    @ApiModelProperty(value = "剩余库存")
+     @Schema(name = "剩余库存")
     @JsonProperty("surplus")
     private Integer surplus;
 
-    @ApiModelProperty(value = "近30天销量")
+     @Schema(name = "近30天销量")
     @JsonProperty("recent_sales")
     private Integer recentSales;
 
-    @ApiModelProperty(value = "销售总量")
+     @Schema(name = "销售总量")
     @JsonProperty("sales_quantity")
     private Integer salesQuantity;
 

@@ -1,13 +1,13 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.RefundStatusConstant;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.mapper.OrderDetailMapper;
-import com.ces.Village.pojo.entity.OrderDetail;
-import com.ces.Village.service.OrderDetailService;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.RefundStatusConstant;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.OrderDetailMapper;
+import com.ces.village.pojo.entity.OrderDetail;
+import com.ces.village.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

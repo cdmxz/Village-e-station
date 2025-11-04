@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import com.alibaba.fastjson2.JSONObject;
 

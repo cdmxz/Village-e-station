@@ -1,34 +1,34 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.OrderStatusConstant;
-import com.ces.Village.pojo.dto.OrderAddDTO;
-import com.ces.Village.pojo.dto.OrderSendDTO;
-import com.ces.Village.pojo.dto.OrderStatusDTO;
-import com.ces.Village.pojo.dto.RefundDTO;
-import com.ces.Village.pojo.entity.OrderDetail;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.pojo.entity.Refund;
-import com.ces.Village.pojo.vo.OrderDetailsVO;
-import com.ces.Village.pojo.vo.OrderListVO;
-import com.ces.Village.pojo.vo.RefundListVO;
-import com.ces.Village.pojo.vo.RefundVo;
-import com.ces.Village.service.OrderDetailService;
-import com.ces.Village.service.OrdersService;
-import com.ces.Village.service.RefundService;
-import com.ces.Village.service.WxMsgService;
-import com.ces.Village.utils.ConvertUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.OrderStatusConstant;
+import com.ces.village.pojo.dto.OrderAddDTO;
+import com.ces.village.pojo.dto.OrderSendDTO;
+import com.ces.village.pojo.dto.OrderStatusDTO;
+import com.ces.village.pojo.dto.RefundDTO;
+import com.ces.village.pojo.entity.OrderDetail;
+import com.ces.village.pojo.entity.Orders;
+import com.ces.village.pojo.entity.Refund;
+import com.ces.village.pojo.vo.OrderDetailsVO;
+import com.ces.village.pojo.vo.OrderListVO;
+import com.ces.village.pojo.vo.RefundListVO;
+import com.ces.village.pojo.vo.RefundVo;
+import com.ces.village.service.OrderDetailService;
+import com.ces.village.service.OrdersService;
+import com.ces.village.service.RefundService;
+import com.ces.village.service.WxMsgService;
+import com.ces.village.utils.ConvertUtil;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +46,7 @@ import java.util.List;
  */
 @Log4j2
 @RestController
-@Api(tags = "订单接口")
+@Tag(name = "订单接口")
 @RequestMapping("/api/order")
 public class OrderController {
 
@@ -152,7 +152,7 @@ public class OrderController {
      */
     @LoginRequired
     @GetMapping("/details")
-    @ApiOperation("查看订单详情")
+    @Operation(summary = "查看订单详情")
     public R<OrderDetailsVO> details(@RequestParam("order_no") String ordersNo) {
         log.info("订单详情：{}", ordersNo);
         OrderDetailsVO detail = ordersService.details(ordersNo);

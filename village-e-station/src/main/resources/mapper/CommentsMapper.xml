@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.ces.Village.mapper.CommentsMapper">
+<mapper namespace="com.ces.village.mapper.CommentsMapper">
 
-    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Comments">
+    <resultMap id="BaseResultMap" type="com.ces.village.pojo.entity.Comments">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="articleId" column="article_id" jdbcType="BIGINT"/>
         <result property="userId" column="user_id" jdbcType="BIGINT"/>
@@ -17,7 +17,7 @@
 
 
 <!--    通过articleId查询一篇文章的评论列表-->
-    <resultMap id="CommentList" type="com.ces.Village.pojo.entity.Comments">
+    <resultMap id="CommentList" type="com.ces.village.pojo.entity.Comments">
         <id property="id" column="id"/>
         <result property="comment" column="comment"/>
         <result property="userId" column="user_id"/>
@@ -25,7 +25,7 @@
         <result property="dateCreated" column="date_created"/>
         <result property="articleId" column="article_id"/>
         <result property="status" column="status"/>
-        <association property="user" javaType="com.ces.Village.pojo.entity.Users">
+        <association property="user" javaType="com.ces.village.pojo.entity.Users">
             <result property="nickName" column="nick_name"/>
             <result property="avatarUrl" column="avatar_url"/>
         </association>
@@ -54,7 +54,7 @@
 <!--    通过userId查询我发布的评论列表
 property是类中的属性名，column是查询之后返回的表字段名
 -->
-    <resultMap id="MyCommentList" type="com.ces.Village.pojo.entity.Comments">
+    <resultMap id="MyCommentList" type="com.ces.village.pojo.entity.Comments">
         <id property="id" column="id"/>
         <result property="userId" column="user_id"/>
         <result property="comment" column="comment"/>
@@ -62,7 +62,7 @@ property是类中的属性名，column是查询之后返回的表字段名
         <result property="dateCreated" column="date_created"/>
         <result property="status" column="status"/>
         <result property="imgUrls" column="img_urls"/>
-        <association property="article" javaType="com.ces.Village.pojo.entity.Article">
+        <association property="article" javaType="com.ces.village.pojo.entity.Article">
             <result property="id" column="article_id"/>
             <result property="title" column="title"/>
         </association>
@@ -91,7 +91,7 @@ property是类中的属性名，column是查询之后返回的表字段名
 
 <!--    查询整个数据库的评论列表，根据状态-->
     <!-- status=0 或 status=null，表示不限制状态-->
-    <resultMap id="DbCommentList" type="com.ces.Village.pojo.entity.Comments">
+    <resultMap id="DbCommentList" type="com.ces.village.pojo.entity.Comments">
         <id property="id" column="id"/>
         <result property="comment" column="comment"/>
         <result property="userId" column="user_id"/>
@@ -99,11 +99,11 @@ property是类中的属性名，column是查询之后返回的表字段名
         <result property="dateCreated" column="date_created"/>
         <result property="articleId" column="article_id"/>
         <result property="status" column="status"/>
-        <association property="user" javaType="com.ces.Village.pojo.entity.Users">
+        <association property="user" javaType="com.ces.village.pojo.entity.Users">
             <result property="nickName" column="nick_name"/>
             <result property="avatarUrl" column="avatar_url"/>
         </association>
-        <association property="article" javaType="com.ces.Village.pojo.entity.Article">
+        <association property="article" javaType="com.ces.village.pojo.entity.Article">
             <result property="id" column="article_id"/>
             <result property="title" column="title"/>
         </association>

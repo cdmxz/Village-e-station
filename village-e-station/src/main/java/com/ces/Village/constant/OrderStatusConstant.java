@@ -1,7 +1,6 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 import lombok.extern.log4j.Log4j2;
-import org.aspectj.lang.annotation.After;
 
 import java.lang.reflect.Field;
 

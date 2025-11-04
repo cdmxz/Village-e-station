@@ -1,4 +1,4 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 /**
  * jwt Claims 常量

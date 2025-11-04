@@ -1,19 +1,11 @@
 package com.ces;
 
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.OrderStatusConstant;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.pojo.dto.ReviewPushDTO;
-import com.ces.Village.pojo.entity.OrderDetail;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.service.OrderDetailService;
-import com.ces.Village.service.OrdersService;
-import com.ces.Village.service.impl.WxMsgServiceImpl;
+import com.ces.village.service.OrderDetailService;
+import com.ces.village.service.OrdersService;
+import com.ces.village.service.impl.WxMsgServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 @SpringBootTest
 class VillageEStationApplicationTests {

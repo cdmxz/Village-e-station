@@ -1,15 +1,14 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 /**
  * <p>
@@ -22,22 +21,22 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("reason")
-@ApiModel(value="reason对象", description="审核失败的理由")
+@Schema(name="reason对象", description="审核失败的理由")
 public class Reason implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键")
+     @Schema(name = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "1、企业招聘2、零工招聘3、零工求职")
+     @Schema(name = "1、企业招聘2、零工招聘3、零工求职")
     private Integer type;
 
-    @ApiModelProperty(value = "招聘信息id")
+     @Schema(name = "招聘信息id")
     private Long informationId;
 
-    @ApiModelProperty(value = "审核失败理由")
+     @Schema(name = "审核失败理由")
     private String reason;
 }

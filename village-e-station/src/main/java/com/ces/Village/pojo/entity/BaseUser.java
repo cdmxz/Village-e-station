@@ -1,11 +1,11 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -16,45 +16,45 @@ import java.time.LocalDateTime;
 @Accessors(chain = true)
 public class BaseUser implements Serializable {
     @Serial
-    @ApiModelProperty(hidden = true)
+    @Schema(hidden = true)
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "主键 ")
+     @Schema(name = "主键 ")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty(value = "姓名")
+     @Schema(name = "姓名")
     @TableField("name")
     @JsonProperty("name")
     private String name;
 
-    @ApiModelProperty(value = "昵称")
+     @Schema(name = "昵称")
     @TableField("nick_name")
     @JsonProperty("nick_name")
     private String nickName;
 
-    @ApiModelProperty(value = "手机号")
+     @Schema(name = "手机号")
     @TableField("phone")
     @JsonProperty("phone")
     private String phone;
 
-    @ApiModelProperty(value = "头像的url地址")
+     @Schema(name = "头像的url地址")
     @TableField("avatar_url")
     @JsonProperty("avatar_url")
     private String avatarUrl;
 
-    @ApiModelProperty(value = "乡村地址")
+     @Schema(name = "乡村地址")
     @TableField("village")
     @JsonProperty("village")
     private String village;
 
-    @ApiModelProperty(value = "外键：用户默认地址id")
+     @Schema(name = "外键：用户默认地址id")
     @TableField("address_default_id")
     @JsonIgnore
     private Long addressDefaultId;
 
-    @ApiModelProperty(value = "创建时间")
+     @Schema(name = "创建时间")
     @TableField("create_time")
     @JsonIgnore
     private LocalDateTime createTime;

@@ -1,10 +1,10 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ces.Village.pojo.entity.GoodsCategory;
-import com.ces.Village.mapper.GoodsCategoryMapper;
-import com.ces.Village.service.GoodsCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ces.village.mapper.GoodsCategoryMapper;
+import com.ces.village.pojo.entity.GoodsCategory;
+import com.ces.village.service.GoodsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

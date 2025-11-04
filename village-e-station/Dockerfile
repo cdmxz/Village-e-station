@@ -1,5 +1,5 @@
-#设置镜像基础，jdk17
-FROM openjdk:17
+#设置镜像基础，jdk24
+FROM openjdk:24
 #设置镜像对外暴露端口
 EXPOSE 7270
 # VOLUME 指定了临时文件目录为/tmp。

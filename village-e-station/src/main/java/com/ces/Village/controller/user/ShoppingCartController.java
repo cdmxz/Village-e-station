@@ -1,19 +1,19 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.entity.ShoppingCart;
-import com.ces.Village.pojo.vo.ShoppingCartGoodsVO;
-import com.ces.Village.service.ShoppingCartService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.entity.ShoppingCart;
+import com.ces.village.pojo.vo.ShoppingCartGoodsVO;
+import com.ces.village.service.ShoppingCartService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +26,7 @@ import java.util.Map;
 @Log4j2
 @RestController
 @RequestMapping("/api/cart")
-@Api(tags = "移动端购物车")
+@Tag(name = "移动端购物车")
 public class ShoppingCartController {
     @Autowired
     private ShoppingCartService shoppingCartService;
@@ -39,7 +39,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @PostMapping("/goodadd")
-    @ApiOperation("添加到购物车")
+    @Operation(summary = "添加到购物车")
     public R<?> add(@RequestBody ShoppingCart shoppingCart) {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         shoppingCart.setUserId(currentUser.getId());
@@ -55,7 +55,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @GetMapping("/goodlist")
-    @ApiOperation("查看购物车的商品列表")
+    @Operation(summary = "查看购物车的商品列表")
     public R<?> list(@RequestParam("page") Integer currentPage, ShoppingCart shoppingCart) {
         //获取到当前用户的id
         CurrentUser currentUser = BaseContext.getCurrentUser();
@@ -76,7 +76,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @DeleteMapping("/clean")
-    @ApiOperation("清空购物车")
+    @Operation(summary = "清空购物车")
     public R<?> clean() {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         boolean result = shoppingCartService.deleteShoppingCart(currentUser.getId());
@@ -95,7 +95,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @DeleteMapping("/gooddelete")
-    @ApiOperation("删除购物车中的一件商品")
+    @Operation(summary = "删除购物车中的一件商品")
     public R<ShoppingCart> deleteGood(@RequestParam("good_id") Long goodsId) {
         log.info("删除购物车中的一件商品...");
         CurrentUser currentUser = BaseContext.getCurrentUser();
@@ -117,7 +117,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @PutMapping("/update/goodnumber")
-    @ApiOperation("修改购物车中该商品的数量")
+    @Operation(summary = "修改购物车中该商品的数量")
     public R<?> update(@RequestBody ShoppingCart shoppingCartDTO) {
         log.info("修改购物车中该商品的数量:{}", shoppingCartDTO);
         CurrentUser currentUser = BaseContext.getCurrentUser();
@@ -137,7 +137,7 @@ public class ShoppingCartController {
      */
     @LoginRequired
     @GetMapping("/goodnumber")
-    @ApiOperation("查询购物车中该商品的数量")
+    @Operation(summary = "查询购物车中该商品的数量")
     public R<?> goodnumber(@RequestParam("good_id") Long goodsId) {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         // 查询购物车中该商品的数量

@@ -1,38 +1,38 @@
-package com.ces.Village.controller.wx;
+package com.ces.village.controller.wx;
 
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.RefundStatusConstant;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.constant.OrderStatusConstant;
-import com.ces.Village.pojo.entity.OrderDetail;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.pojo.entity.Refund;
-import com.ces.Village.service.OrderDetailService;
-import com.ces.Village.service.OrdersService;
-import com.ces.Village.service.RefundService;
-import com.ces.Village.service.WxMsgService;
-import com.ces.Village.utils.JsonConvertUtil;
-import com.ces.Village.utils.WxPayUtil;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.OrderStatusConstant;
+import com.ces.village.constant.RefundStatusConstant;
+import com.ces.village.exception.CustomException;
+import com.ces.village.pojo.entity.OrderDetail;
+import com.ces.village.pojo.entity.Orders;
+import com.ces.village.pojo.entity.Refund;
+import com.ces.village.service.OrderDetailService;
+import com.ces.village.service.OrdersService;
+import com.ces.village.service.RefundService;
+import com.ces.village.service.WxMsgService;
+import com.ces.village.utils.JsonConvertUtil;
+import com.ces.village.utils.WxPayUtil;
 import com.wechat.pay.java.service.payments.model.Transaction;
 import com.wechat.pay.java.service.refund.model.RefundNotification;
 import com.wechat.pay.java.service.refund.model.Status;
-import io.swagger.annotations.Api;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
  * 微信支付 回调
  */
 @Log4j2
-@Api(tags = "微信支付")
+ @Tag(name = "微信支付")
 @RestController
 @RequestMapping("/api/wxpay")
 public class WxPayController {

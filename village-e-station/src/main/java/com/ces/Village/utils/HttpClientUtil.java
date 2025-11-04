@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.log4j.Log4j2;

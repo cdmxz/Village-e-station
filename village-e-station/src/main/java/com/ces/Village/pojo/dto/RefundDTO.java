@@ -1,10 +1,7 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * 用户请求退款DTO

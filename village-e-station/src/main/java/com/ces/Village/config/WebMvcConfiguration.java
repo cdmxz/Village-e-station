@@ -1,13 +1,15 @@
-package com.ces.Village.config;
+package com.ces.village.config;
 
-import com.ces.Village.common.JacksonObjectMapper;
-import com.ces.Village.interceptor.JwtTokenUserInterceptor;
+import com.ces.village.common.JacksonObjectMapper;
+import com.ces.village.interceptor.JwtTokenUserInterceptor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
@@ -31,7 +33,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("开始注册自定义拦截器...");
         registry.addInterceptor(jwtTokenUserInterceptor)
-                .addPathPatterns("/**");    // 拦截所有请求，通过判断是否有 @LoginRequired 注解 决定是否需要登录
+                .addPathPatterns("/**") // 拦截所有请求，通过判断是否有 @LoginRequired 注解 决定是否需要登录
+                .excludePathPatterns("/swagger-ui/**", "/v3/api-docs/**");
     }
 
     /**
@@ -44,13 +47,14 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/front-text/**")
                 .addResourceLocations("classpath:/front-text/");
         registry.addResourceHandler("classpath:mapper/*.xml")
-                .addResourceLocations("classpath:mapper/*.xml");
+                .addResourceLocations("classpath:mapper/*.xml/");
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
+//        registry.addResourceHandler("swagger-ui.html")
+//                .addResourceLocations("classpath:/META-INF/resources/");
+
     }
 
     /**
@@ -65,7 +69,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         //需要为消息转换器设置一个对象转换器，对象转换器可以将Java对象序列化为json数据
         converter.setObjectMapper(new JacksonObjectMapper());
         //将自己的消息转化器加入容器中
-        converters.add(0, converter);
+        converters.addFirst(new ByteArrayHttpMessageConverter());
+        converters.add(converter);
+
     }
 
 //    @Override

@@ -1,13 +1,13 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-@ApiModel(description = "管理员登录时传递的数据模型")
+@Schema(description = "管理员登录时传递的数据模型")
 public class AdminLoginDTO implements Serializable {
 
     @JsonProperty("username")

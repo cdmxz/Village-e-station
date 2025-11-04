@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 
 import com.aliyun.oss.OSS;
@@ -7,17 +7,14 @@ import com.aliyun.oss.OSSException;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.auth.sts.AssumeRoleRequest;
 import com.aliyuncs.auth.sts.AssumeRoleResponse;
-
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-import com.ces.Village.pojo.vo.AliStsVO;
-import com.ces.Village.properties.AliOssProperties;
-
+import com.ces.village.pojo.vo.AliStsVO;
+import com.ces.village.properties.AliOssProperties;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;

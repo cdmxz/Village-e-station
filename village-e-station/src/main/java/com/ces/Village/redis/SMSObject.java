@@ -1,4 +1,4 @@
-package com.ces.Village.redis;
+package com.ces.village.redis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

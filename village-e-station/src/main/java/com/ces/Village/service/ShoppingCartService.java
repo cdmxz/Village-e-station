@@ -1,9 +1,9 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.entity.ShoppingCart;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ces.Village.pojo.vo.ShoppingCartGoodsVO;
+import com.ces.village.pojo.entity.ShoppingCart;
+import com.ces.village.pojo.vo.ShoppingCartGoodsVO;
 
 /**
  * <p>

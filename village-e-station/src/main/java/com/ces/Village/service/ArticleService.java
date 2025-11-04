@@ -1,10 +1,10 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ces.Village.pojo.entity.Article;
+import com.ces.village.pojo.entity.Article;
 
 /**
  * @author Administrator

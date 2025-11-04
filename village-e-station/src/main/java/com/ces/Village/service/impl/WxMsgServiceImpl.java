@@ -1,29 +1,28 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
-import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.ces.Village.constant.RefundStatusConstant;
-import com.ces.Village.pojo.dto.ReviewPushDTO;
-import com.ces.Village.pojo.dto.WxMediaCheckPushResponse;
-import com.ces.Village.pojo.dto.WxMsgPushResponse;
-import com.ces.Village.pojo.entity.Comments;
-import com.ces.Village.pojo.entity.OrderDetail;
-import com.ces.Village.pojo.entity.Orders;
-import com.ces.Village.pojo.entity.Refund;
-import com.ces.Village.properties.WxPushProperties;
-import com.ces.Village.service.OssService;
-import com.ces.Village.service.UsersService;
-import com.ces.Village.service.WxMsgService;
-import com.ces.Village.utils.StringUtils;
-import com.ces.Village.utils.WxApiUtil;
+import com.ces.village.constant.RefundStatusConstant;
+import com.ces.village.pojo.dto.ReviewPushDTO;
+import com.ces.village.pojo.dto.WxMediaCheckPushResponse;
+import com.ces.village.pojo.dto.WxMsgPushResponse;
+import com.ces.village.pojo.entity.Comments;
+import com.ces.village.pojo.entity.OrderDetail;
+import com.ces.village.pojo.entity.Orders;
+import com.ces.village.pojo.entity.Refund;
+import com.ces.village.properties.WxPushProperties;
+import com.ces.village.service.OssService;
+import com.ces.village.service.UsersService;
+import com.ces.village.service.WxMsgService;
+import com.ces.village.utils.StringUtils;
+import com.ces.village.utils.WxApiUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -208,7 +207,7 @@ public class WxMsgServiceImpl implements WxMsgService {
         // 使用SHA1进行加密
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-1");
-            byte[] bytes = contentBuilder.toString().getBytes("UTF-8");
+            byte[] bytes = contentBuilder.toString().getBytes(StandardCharsets.UTF_8);
             byte[] sha1Bytes = md.digest(bytes);
 
             // 转换为十六进制字符串并与请求中的signature对比
@@ -236,7 +235,7 @@ public class WxMsgServiceImpl implements WxMsgService {
     public void mediaCheckCallBack(WxMediaCheckPushResponse pushDTO) {
         log.info("媒体检测接口返回的参数：" + JSON.toJSON(pushDTO));
         String key = pushDTO.getTrace_id();
-        if (Boolean.TRUE.equals(redisTemplate.hasKey(key))) {
+        if (redisTemplate.hasKey(key)) {
             String imgUrl = (String) redisTemplate.opsForValue().get(key);
             redisTemplate.delete(key);
             // 解析返回参数

@@ -1,16 +1,15 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * 发送短信验证码dto
  */
 @Data
-@ApiModel(description = "发送短信验证码dto")
+@Schema(description = "发送短信验证码dto")
 public class SMSDTO {
     @NotBlank(message = "手机号不能为空")
     @JsonProperty("phone")

@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;

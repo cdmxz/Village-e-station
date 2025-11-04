@@ -1,7 +1,6 @@
-package com.ces.Village.properties;
+package com.ces.village.properties;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;

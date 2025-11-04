@@ -1,11 +1,10 @@
-package com.ces.Village.handler;
+package com.ces.village.handler;
 
 
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.exception.CustomException;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;

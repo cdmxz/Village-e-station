@@ -1,10 +1,9 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.dto.JobAddDTO;
-import com.ces.Village.pojo.dto.JobDTO;
-import com.ces.Village.pojo.dto.ReviewPushDTO;
-import com.ces.Village.pojo.entity.EnterpriseHires;
+import com.ces.village.pojo.dto.JobAddDTO;
+import com.ces.village.pojo.dto.JobDTO;
+import com.ces.village.pojo.dto.ReviewPushDTO;
 
 /**
  * 企业招聘、零工招聘、零工求职 都拥有的方法

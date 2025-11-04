@@ -1,16 +1,16 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+ 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 
 @Data
-@ApiModel(description = "文章列表")
+@Schema(description = "文章列表")
 public class ArticleVo {
     @JsonProperty("article_id")
     private Long id;
@@ -42,7 +42,7 @@ public class ArticleVo {
     /**
      * 作者的用户id
      */
-    @ApiModelProperty(value = "作者的用户id", position = 6)
+     @Schema(name  = "作者的用户id" )
     @JsonIgnore
     private Long authorId;
 }

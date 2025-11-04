@@ -1,6 +1,8 @@
-package com.ces.Village.aspect;
+package com.ces.village.aspect;
 
-import com.ces.Village.utils.JsonConvertUtil;
+import com.ces.village.utils.JsonConvertUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,8 +11,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +23,7 @@ import java.util.Map;
 @Log4j2
 public class LogAspect {
 
-    @Pointcut("execution(public * com.ces.Village.controller.user.*.*(..))")
+    @Pointcut("execution(public * com.ces.village.controller.user.*.*(..))")
     public void logExecution() {
 
     }

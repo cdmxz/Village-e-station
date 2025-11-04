@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ces.Village.mapper.EnterpriseHiresMapper">
+<mapper namespace="com.ces.village.mapper.EnterpriseHiresMapper">
 
-    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.EnterpriseHires">
+    <resultMap id="BaseResultMap" type="com.ces.village.pojo.entity.EnterpriseHires">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="userId" column="user_id" jdbcType="BIGINT"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
@@ -22,7 +22,7 @@
         <result property="reason" column="reason" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <resultMap id="GetPageMap" type="com.ces.Village.pojo.entity.EnterpriseHires">
+    <resultMap id="GetPageMap" type="com.ces.village.pojo.entity.EnterpriseHires">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
         <result property="work" column="work" jdbcType="VARCHAR"/>
@@ -36,7 +36,7 @@
     </resultMap>
 
     <!--    status == 0表示查询任意状态的招聘信息-->
-    <select id="getPageByUserIdAndStatus" resultType="com.ces.Village.pojo.entity.EnterpriseHires">
+    <select id="getPageByUserIdAndStatus" resultType="com.ces.village.pojo.entity.EnterpriseHires">
         SELECT en.*,r.reason
         from enterprise_hires en
         LEFT JOIN reason r ON en.id = r.information_id AND r.type = 1

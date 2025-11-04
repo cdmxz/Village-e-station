@@ -1,9 +1,9 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.mapper.PrivacyProtocolMapper;
-import com.ces.Village.pojo.entity.PrivacyProtocol;
-import com.ces.Village.service.PrivacyProtocolService;
+import com.ces.village.mapper.PrivacyProtocolMapper;
+import com.ces.village.pojo.entity.PrivacyProtocol;
+import com.ces.village.service.PrivacyProtocolService;
 import org.springframework.stereotype.Service;
 
 /**

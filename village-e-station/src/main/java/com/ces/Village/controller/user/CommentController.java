@@ -1,35 +1,35 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.common.UserFactory;
-import com.ces.Village.constant.CommentStatusConstant;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.dto.CommentDTO;
-import com.ces.Village.pojo.dto.CommentStatusDTO;
-import com.ces.Village.pojo.dto.WxMsgPushResponse;
-import com.ces.Village.pojo.entity.BaseUser;
-import com.ces.Village.pojo.entity.Comments;
-import com.ces.Village.pojo.vo.CommentListVo;
-import com.ces.Village.pojo.vo.CommentsStatusVo;
-import com.ces.Village.pojo.vo.CommentsVo;
-import com.ces.Village.pojo.vo.MyCommentsVo;
-import com.ces.Village.properties.JwtProperties;
-import com.ces.Village.service.CommentsService;
-import com.ces.Village.service.OssService;
-import com.ces.Village.utils.JsonConvertUtil;
-import com.ces.Village.utils.JwtUtil;
-import com.ces.Village.utils.StringUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.common.UserFactory;
+import com.ces.village.constant.CommentStatusConstant;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.dto.CommentDTO;
+import com.ces.village.pojo.dto.CommentStatusDTO;
+import com.ces.village.pojo.entity.BaseUser;
+import com.ces.village.pojo.entity.Comments;
+import com.ces.village.pojo.vo.CommentListVo;
+import com.ces.village.pojo.vo.CommentsStatusVo;
+import com.ces.village.pojo.vo.CommentsVo;
+import com.ces.village.pojo.vo.MyCommentsVo;
+import com.ces.village.properties.JwtProperties;
+import com.ces.village.service.CommentsService;
+import com.ces.village.service.OssService;
+import com.ces.village.utils.JsonConvertUtil;
+import com.ces.village.utils.JwtUtil;
+import com.ces.village.utils.StringUtils;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ import java.util.Objects;
  * 评论
  */
 @Log4j2
-@Api(tags = "评论接口")
+@Tag(name = "评论接口")
 @RestController
 @RequestMapping("/api/article/comment")
 @RequiredArgsConstructor
@@ -54,7 +54,7 @@ public class CommentController {
      */
     @LoginRequired()
     @DeleteMapping("/delete")
-    @ApiOperation("删除评论")
+    @Operation(summary = "删除评论")
     public R<?> deleteComment(@RequestParam("comment_id") String commentId) {
         log.info("删除评论，id={}", commentId);
         CurrentUser currentUser = BaseContext.getCurrentUser();
@@ -85,7 +85,7 @@ public class CommentController {
      *
      * @param articleId 文章id
      */
-    @ApiOperation(value = "查询一篇文章的评论列表")
+    @Operation(summary  = "查询一篇文章的评论列表")
     @GetMapping(value = "/list")
     public R<CommentListVo<CommentsVo>> getCommentList(
             @RequestParam(value = "page", required = false) Integer currentPage,
@@ -125,7 +125,7 @@ public class CommentController {
      * 查询我发布的评论列表
      */
     @LoginRequired
-    @ApiOperation(value = "查询我发布的评论列表")
+    @Operation(summary  = "查询我发布的评论列表")
     @GetMapping(value = "/mycomment")
     public R<CommentListVo<MyCommentsVo>> getMyCommentList(
             @RequestParam(value = "page", required = false) Integer currentPage,
@@ -162,7 +162,7 @@ public class CommentController {
      * 发布评论
      */
     @LoginRequired
-    @ApiOperation(value = "发布评论")
+    @Operation(summary  = "发布评论")
     @PostMapping(value = "/publish")
     public R<?> publishComment(@Valid @RequestBody() CommentDTO commentDTO) {
         log.info("发布评论：{}", commentDTO);
@@ -188,7 +188,7 @@ public class CommentController {
      *
      */
     @LoginRequired(requireAdmin = true)
-    @ApiOperation(value = "查询，整个数据库，状态为待审核的评论")
+    @Operation(summary  = "查询，整个数据库，状态为待审核的评论")
     @GetMapping("/admin/review/list")
     public R<CommentListVo<CommentsStatusVo>> getReviewComment(
             @RequestParam(value = "page", required = false) Integer currentPage,
@@ -219,7 +219,7 @@ public class CommentController {
      * @return
      */
     @LoginRequired(requireAdmin = true)
-    @ApiOperation(value = "审核评论")
+    @Operation(summary  = "审核评论")
     @PostMapping("/admin/review")
     public R<?> review(@RequestBody CommentStatusDTO commentStatusDTO) {
         log.info("审核评论");

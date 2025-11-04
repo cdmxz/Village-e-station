@@ -1,10 +1,9 @@
-package com.ces.Village.task;
+package com.ces.village.task;
 
-import com.ces.Village.service.EnterpriseHiresJobService;
-import com.ces.Village.service.GigHiresJobService;
-import com.ces.Village.service.GigHuntingJobService;
+import com.ces.village.service.EnterpriseHiresJobService;
+import com.ces.village.service.GigHiresJobService;
+import com.ces.village.service.GigHuntingJobService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

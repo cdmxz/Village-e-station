@@ -1,17 +1,15 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * 重置密码dto
  */
 @Data
-@ApiModel(description = "重置密码dto")
+@Schema(description = "重置密码dto")
 public class ResetPwdDTO {
     @NotBlank(message = "手机号不能为空")
     @JsonProperty("phone")

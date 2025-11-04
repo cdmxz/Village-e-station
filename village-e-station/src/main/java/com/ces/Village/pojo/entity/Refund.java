@@ -1,6 +1,5 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
 
-import com.alibaba.fastjson2.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

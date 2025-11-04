@@ -1,18 +1,18 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.entity.EnterpriseInformation;
-import com.ces.Village.service.EnterpriseInformationService;
-import com.ces.Village.service.OssService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.entity.EnterpriseInformation;
+import com.ces.village.service.EnterpriseInformationService;
+import com.ces.village.service.OssService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +22,7 @@ import java.util.Objects;
  * 当前用户的企业信息
  */
 @Log4j2
-@Api(tags = "企业信息接口")
+@Tag(name = "企业信息接口")
 @RestController
 @RequestMapping("/api/job/enterprise")
 @RequiredArgsConstructor
@@ -37,7 +37,7 @@ public class EnterpriseInformationController {
      */
     @LoginRequired
     @PostMapping("/add")
-    @ApiOperation("增加当前用户的企业信息")
+    @Operation(summary = "增加当前用户的企业信息")
     public R<?> add(@RequestBody EnterpriseInformation informationDTO) {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         EnterpriseInformation information = enterpriseInformationService.getByUserId(currentUser.getId());
@@ -61,7 +61,7 @@ public class EnterpriseInformationController {
      */
     @LoginRequired
     @GetMapping("/")
-    @ApiOperation("查询当前用户的企业信息")
+    @Operation(summary = "查询当前用户的企业信息")
     public R<?> query() {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         EnterpriseInformation information = enterpriseInformationService.getByUserId(currentUser.getId());
@@ -77,7 +77,7 @@ public class EnterpriseInformationController {
      */
     @LoginRequired
     @PutMapping("/update")
-    @ApiOperation("修改当前用户的企业信息")
+    @Operation(summary = "修改当前用户的企业信息")
     public R<?> update(@RequestBody EnterpriseInformation informationDTO) {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         EnterpriseInformation information = enterpriseInformationService.getById(informationDTO.getId());
@@ -103,7 +103,7 @@ public class EnterpriseInformationController {
      */
     @LoginRequired
     @DeleteMapping("/delete")
-    @ApiOperation("删除当前用户的企业信息")
+    @Operation(summary = "删除当前用户的企业信息")
     public R<?> delete() {
         CurrentUser currentUser = BaseContext.getCurrentUser();
         EnterpriseInformation enterpriseInformation = enterpriseInformationService.getByUserId(currentUser.getId());

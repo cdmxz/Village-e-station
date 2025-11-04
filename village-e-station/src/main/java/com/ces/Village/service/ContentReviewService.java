@@ -1,9 +1,9 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 
 import com.aliyun.green20220302.models.ImageModerationResponseBody;
-import com.ces.Village.pojo.dto.WxMediaCheckResponse;
-import com.ces.Village.pojo.dto.WxMsgCheckResponse;
+import com.ces.village.pojo.dto.WxMediaCheckResponse;
+import com.ces.village.pojo.dto.WxMsgCheckResponse;
 
 import java.util.List;
 

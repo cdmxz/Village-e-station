@@ -1,6 +1,6 @@
-package com.ces.Village.common;
+package com.ces.village.common;
 
-import com.ces.Village.constant.ErrorCodeEnum;
+import com.ces.village.constant.ErrorCodeEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
-import com.ces.Village.properties.AliSMSProperties;
+import com.ces.village.properties.AliSMSProperties;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

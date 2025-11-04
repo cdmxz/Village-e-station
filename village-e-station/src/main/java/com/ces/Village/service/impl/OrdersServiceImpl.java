@@ -1,23 +1,23 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.constant.*;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.mapper.OrdersMapper;
-import com.ces.Village.pojo.dto.OrderAddDTO;
-import com.ces.Village.pojo.dto.OrderAddGoodsDTO;
-import com.ces.Village.pojo.dto.RefundDTO;
-import com.ces.Village.pojo.entity.*;
-import com.ces.Village.pojo.vo.OrderDetailsVO;
-import com.ces.Village.service.*;
-import com.ces.Village.utils.ConvertUtil;
-import com.ces.Village.utils.SnowflakeUtil;
-import com.ces.Village.utils.WxPayUtil;
+import com.ces.village.common.BaseContext;
+import com.ces.village.constant.*;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.OrdersMapper;
+import com.ces.village.pojo.dto.OrderAddDTO;
+import com.ces.village.pojo.dto.OrderAddGoodsDTO;
+import com.ces.village.pojo.dto.RefundDTO;
+import com.ces.village.pojo.entity.*;
+import com.ces.village.pojo.vo.OrderDetailsVO;
+import com.ces.village.service.*;
+import com.ces.village.utils.ConvertUtil;
+import com.ces.village.utils.SnowflakeUtil;
+import com.ces.village.utils.WxPayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -405,7 +405,7 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         }
         // 根据订货单号和商品id查询退款记录
         Refund refund = refundService.getByOrderNoAndGoodId(orderNo, goodId);
-        if (refund != null && refund.getStatus().equals(RefundStatusConstant.REJECT_REFUND) == false) {
+        if (refund != null && !refund.getStatus().equals(RefundStatusConstant.REJECT_REFUND)) {
             // 如果找到了 该订单中的该商品的退款记录，且退款状态也不是拒绝退款
             throw new CustomException(ErrorCodeEnum.HAS_EXISTED_REFUND);
         }

@@ -1,13 +1,12 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.pojo.vo.UserAddressVO;
-import com.ces.Village.service.UserAddressService;
-import com.ces.Village.mapper.UserAddressMapper;
-import com.ces.Village.pojo.entity.UserAddress;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
+import com.ces.village.common.BaseContext;
+import com.ces.village.mapper.UserAddressMapper;
+import com.ces.village.pojo.entity.UserAddress;
+import com.ces.village.pojo.vo.UserAddressVO;
+import com.ces.village.service.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

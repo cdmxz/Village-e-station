@@ -1,25 +1,22 @@
-package com.ces.Village.pojo.entity;
+package com.ces.village.pojo.entity;
 
-import java.io.Serial;
-import java.math.BigDecimal;
-
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.time.LocalDateTime;
-import java.io.Serializable;
-import java.util.List;
-
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serial;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -33,7 +30,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @TableName("orders")
-@ApiModel(value = "Orders对象", description = "订单表")
+@Schema(name = "Orders对象", description = "订单表")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Orders implements Serializable {
 
@@ -41,68 +38,68 @@ public class Orders implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @JsonIgnore
-    @ApiModelProperty(value = "主键")
+     @Schema(name = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long orderId;
 
-    @ApiModelProperty(value = "订单号")
+     @Schema(name = "订单号")
     @JsonProperty("order_no")
     private Long orderNo;
 
-    @ApiModelProperty(value = "运费")
+     @Schema(name = "运费")
     @JsonProperty("postage")
     private BigDecimal postage;
 
-    @ApiModelProperty(value = "总金额")
+     @Schema(name = "总金额")
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
 
-    @ApiModelProperty(value = "优惠金额")
+     @Schema(name = "优惠金额")
     @JsonProperty("discount_amount")
     private BigDecimal discountAmount;
 
-    @ApiModelProperty(value = "实际价格")
+     @Schema(name = "实际价格")
     @JsonProperty("actual_amount")
     private BigDecimal actualAmount;
 
-    @ApiModelProperty(value = "收货信息：张x,139xx,广东省xx")
+     @Schema(name = "收货信息：张x,139xx,广东省xx")
     @JsonProperty("receive_information")
     private String receiveInformation;
 
-    @ApiModelProperty(value = "物流单号")
+     @Schema(name = "物流单号")
     @JsonProperty("track_number")
     private String trackNumber;
 
-    @ApiModelProperty(value = "下单时间")
+     @Schema(name = "下单时间")
     @JsonProperty("order_time")
     private LocalDateTime orderTime;
 
-    @ApiModelProperty(value = "付款时间")
+     @Schema(name = "付款时间")
     @JsonProperty("pay_time")
     private LocalDateTime payTime;
 
-    @ApiModelProperty(value = "发货时间")
+     @Schema(name = "发货时间")
     @JsonProperty("send_time")
     private LocalDateTime sendTime;
 
-    @ApiModelProperty(value = "收货时间")
+     @Schema(name = "收货时间")
     @JsonProperty("receive_time")
     private LocalDateTime receiveTime;
 
-    @ApiModelProperty(value = "订单状态 1待付款、2待发货、3待收货、4已完成、5已关闭")
+     @Schema(name = "订单状态 1待付款、2待发货、3待收货、4已完成、5已关闭")
     @JsonProperty("status")
     private Integer orderStatus;
 
-    @ApiModelProperty(value = "用户id")
+     @Schema(name = "用户id")
     @JsonIgnore
     @JsonProperty("user_id")
     private Long userId;
 
-    @ApiModelProperty(value = "到期时间 未付款订单使用")
+     @Schema(name = "到期时间 未付款订单使用")
     @JsonProperty("expire_time")
     private LocalDateTime expireTime;
 
-    @ApiModelProperty(value = "外键：订单详情")
+     @Schema(name = "外键：订单详情")
     @TableField(exist = false)
     @JsonProperty("goods")
     private List<OrderDetail> orderDetails;

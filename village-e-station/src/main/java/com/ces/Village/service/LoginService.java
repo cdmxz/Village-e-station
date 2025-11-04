@@ -1,6 +1,6 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
-import com.ces.Village.pojo.dto.WxOpenIdResponse;
+import com.ces.village.pojo.dto.WxOpenIdResponse;
 
 /**
  * 登录、注册 前端服务

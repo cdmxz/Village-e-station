@@ -1,4 +1,4 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 import lombok.Getter;
 
@@ -123,4 +123,5 @@ public enum ErrorCodeEnum {
     public String toString() {
         return "ErrorCodeEnum{" + "code='" + code + '\'' + ", msg='" + msg + '\'' + '}';
     }
+
 }

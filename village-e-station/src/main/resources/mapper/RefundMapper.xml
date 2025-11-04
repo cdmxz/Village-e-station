@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ces.Village.mapper.RefundMapper">
+<mapper namespace="com.ces.village.mapper.RefundMapper">
 
-    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.Refund">
+    <resultMap id="BaseResultMap" type="com.ces.village.pojo.entity.Refund">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="thumbnailUrl" column="thumbnail_url" jdbcType="VARCHAR"/>

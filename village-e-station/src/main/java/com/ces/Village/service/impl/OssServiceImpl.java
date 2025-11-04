@@ -1,14 +1,14 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.aliyun.green20220302.models.ImageModerationResponseBody;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.vo.AliStsVO;
-import com.ces.Village.service.ContentReviewService;
-import com.ces.Village.service.OssService;
-import com.ces.Village.utils.AliOssUtil;
-import com.ces.Village.utils.JsonConvertUtil;
-import com.ces.Village.utils.RichTextUtils;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.vo.AliStsVO;
+import com.ces.village.service.ContentReviewService;
+import com.ces.village.service.OssService;
+import com.ces.village.utils.AliOssUtil;
+import com.ces.village.utils.JsonConvertUtil;
+import com.ces.village.utils.RichTextUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;

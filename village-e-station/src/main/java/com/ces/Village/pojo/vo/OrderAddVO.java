@@ -1,6 +1,6 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
-import com.ces.Village.pojo.entity.ShoppingCart;
+import com.ces.village.pojo.entity.ShoppingCart;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

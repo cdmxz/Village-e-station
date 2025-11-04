@@ -1,25 +1,28 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.pojo.dto.UserInformationDTO;
-import com.ces.Village.pojo.dto.UserLoginDTO;
-import com.ces.Village.pojo.dto.UserRegisterDTO;
-import com.ces.Village.pojo.dto.WxOpenIdResponse;
-import com.ces.Village.pojo.entity.Admin;
-import com.ces.Village.pojo.entity.Users;
-import com.ces.Village.pojo.vo.LoginVO;
-import com.ces.Village.pojo.vo.UserInformationVO;
-import com.ces.Village.properties.JwtProperties;
-import com.ces.Village.service.*;
-import com.ces.Village.utils.ConvertUtil;
-import com.ces.Village.utils.JwtUtil;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.pojo.dto.UserInformationDTO;
+import com.ces.village.pojo.dto.UserLoginDTO;
+import com.ces.village.pojo.dto.UserRegisterDTO;
+import com.ces.village.pojo.dto.WxOpenIdResponse;
+import com.ces.village.pojo.entity.Admin;
+import com.ces.village.pojo.entity.Users;
+import com.ces.village.pojo.vo.LoginVO;
+import com.ces.village.pojo.vo.UserInformationVO;
+import com.ces.village.properties.JwtProperties;
+import com.ces.village.service.*;
+import com.ces.village.utils.ConvertUtil;
+import com.ces.village.utils.JwtUtil;
 import io.netty.util.internal.StringUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,8 +30,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +38,7 @@ import java.util.Map;
  * 用户信息
  */
 @Log4j2
-@Api(tags = "用户接口")
+@Tag(name = "用户接口")
 @RestController
 @RequestMapping("/api/user")
 public class UsersController {
@@ -208,7 +209,7 @@ public class UsersController {
      */
     @LoginRequired
     @PostMapping("/logout")
-    @ApiOperation("退出登陆")
+    @Operation(summary = "退出登陆")
     public R<String> logout(@RequestParam(value = HttpHeaders.AUTHORIZATION) String userToken) {
 
         return R.success();

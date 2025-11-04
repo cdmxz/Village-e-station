@@ -1,4 +1,4 @@
-package com.ces.Village.config;
+package com.ces.village.config;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;

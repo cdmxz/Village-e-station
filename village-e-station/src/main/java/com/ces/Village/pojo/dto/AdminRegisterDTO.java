@@ -1,10 +1,8 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * 管理员注册DTO

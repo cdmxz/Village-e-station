@@ -1,12 +1,12 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.entity.Article;
-import com.ces.Village.utils.ConvertUtil;
+import com.ces.village.pojo.entity.Article;
+import com.ces.village.utils.ConvertUtil;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 @Builder
 @AllArgsConstructor
-@ApiModel(description = "文章列表")
+@Schema(description = "文章列表")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ArticleListVo {
     @JsonProperty("pagecount")

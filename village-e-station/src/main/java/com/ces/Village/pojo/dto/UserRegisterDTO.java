@@ -1,9 +1,8 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
-import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
 
 /**
  * 用户注册DTO

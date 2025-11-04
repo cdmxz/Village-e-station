@@ -1,11 +1,14 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
-import com.ces.Village.pojo.entity.UserAddress;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ces.Village.pojo.vo.AddressVO;
-import com.ces.Village.pojo.vo.UserAddressVO;
-import com.ces.Village.pojo.vo.UserDefaultVO;
-import org.apache.ibatis.annotations.*;
+import com.ces.village.pojo.entity.UserAddress;
+import com.ces.village.pojo.vo.AddressVO;
+import com.ces.village.pojo.vo.UserAddressVO;
+import com.ces.village.pojo.vo.UserDefaultVO;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
 import lombok.Data;
 

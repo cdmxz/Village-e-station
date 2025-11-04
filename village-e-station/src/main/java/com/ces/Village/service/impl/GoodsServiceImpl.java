@@ -1,22 +1,22 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.constant.CategoryIdConstant;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.GoodStatusConstant;
-import com.ces.Village.pojo.dto.GoodsDTO;
-import com.ces.Village.pojo.entity.Goods;
-import com.ces.Village.mapper.GoodsMapper;
-import com.ces.Village.pojo.vo.GoodsDetailVO;
-import com.ces.Village.pojo.vo.SurplusVO;
-import com.ces.Village.service.GoodsService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.utils.ConvertUtil;
-import com.ces.Village.utils.JsonConvertUtil;
+import com.ces.village.constant.CategoryIdConstant;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.GoodStatusConstant;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.GoodsMapper;
+import com.ces.village.pojo.dto.GoodsDTO;
+import com.ces.village.pojo.entity.Goods;
+import com.ces.village.pojo.vo.GoodsDetailVO;
+import com.ces.village.pojo.vo.SurplusVO;
+import com.ces.village.service.GoodsService;
+import com.ces.village.utils.ConvertUtil;
+import com.ces.village.utils.JsonConvertUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

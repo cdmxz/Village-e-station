@@ -1,4 +1,4 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 import lombok.extern.log4j.Log4j2;
 

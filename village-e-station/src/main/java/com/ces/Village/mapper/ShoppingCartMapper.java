@@ -1,10 +1,13 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.pojo.entity.ShoppingCart;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ces.Village.pojo.vo.ShoppingCartGoodsVO;
-import org.apache.ibatis.annotations.*;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ces.village.pojo.entity.ShoppingCart;
+import com.ces.village.pojo.vo.ShoppingCartGoodsVO;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * <p>

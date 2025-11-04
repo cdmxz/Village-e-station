@@ -1,4 +1,4 @@
-package com.ces.Village.config;
+package com.ces.village.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

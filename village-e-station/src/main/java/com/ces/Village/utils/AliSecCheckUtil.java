@@ -1,4 +1,4 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
 import com.aliyun.green20220302.models.ImageModerationRequest;
 import com.aliyun.green20220302.models.ImageModerationResponse;
@@ -6,7 +6,7 @@ import com.aliyun.green20220302.models.TextModerationRequest;
 import com.aliyun.green20220302.models.TextModerationResponse;
 import com.aliyun.tea.TeaException;
 import com.aliyun.teautil.models.RuntimeOptions;
-import com.ces.Village.properties.AliKeyProperties;
+import com.ces.village.properties.AliKeyProperties;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

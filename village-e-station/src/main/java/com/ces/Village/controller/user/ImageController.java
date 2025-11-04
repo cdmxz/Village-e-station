@@ -1,13 +1,13 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.utils.AliOssUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.utils.AliOssUtil;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +19,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/api/image")
-@Api(tags = "图片接口")
+@Tag(name = "图片接口")
 @Log4j2
 public class ImageController {
 
@@ -34,7 +34,7 @@ public class ImageController {
      */
     @LoginRequired
     @PostMapping("/upload")
-    @ApiOperation("图片上传")
+    @Operation(summary = "图片上传")
     public R<String> upload(MultipartFile file) {
         log.info("图片上传：{}", file);
         try {

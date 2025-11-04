@@ -1,7 +1,7 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
-import com.ces.Village.pojo.entity.Chart;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ces.village.pojo.entity.Chart;
 
 import java.util.List;
 

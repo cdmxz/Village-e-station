@@ -1,10 +1,10 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ces.Village.pojo.entity.Chart;
-import com.ces.Village.mapper.ChartMapper;
-import com.ces.Village.service.ChartService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ces.village.mapper.ChartMapper;
+import com.ces.village.pojo.entity.Chart;
+import com.ces.village.service.ChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

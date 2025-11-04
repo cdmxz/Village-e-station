@@ -1,22 +1,22 @@
-package com.ces.Village.controller.wx;
+package com.ces.village.controller.wx;
 
-import com.ces.Village.pojo.dto.WxMediaCheckPushResponse;
-import com.ces.Village.service.WxMsgService;
-import io.swagger.annotations.Api;
+import com.ces.village.pojo.dto.WxMediaCheckPushResponse;
+import com.ces.village.service.WxMsgService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.nio.charset.StandardCharsets;
 
 /**
  * 微信消息推送
  */
 @Log4j2
-@Api(tags = "微信消息推送")
+@Tag(name = "微信消息推送")
 @Controller
 @RequestMapping("/api/wxmsg")
 public class WxMsgController {

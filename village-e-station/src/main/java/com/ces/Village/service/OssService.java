@@ -1,7 +1,7 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
-import com.ces.Village.common.R;
-import com.ces.Village.pojo.vo.AliStsVO;
+import com.ces.village.common.R;
+import com.ces.village.pojo.vo.AliStsVO;
 import org.springframework.scheduling.annotation.Async;
 
 import java.util.List;

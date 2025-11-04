@@ -1,10 +1,9 @@
-package com.ces.Village.pojo.dto;
+package com.ces.village.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
-import javax.validation.constraints.NotBlank;
 
 /**
  * 修改用户信息dto

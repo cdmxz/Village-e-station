@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ces.Village.mapper.GigHiresMapper">
+<mapper namespace="com.ces.village.mapper.GigHiresMapper">
 
-    <resultMap id="BaseResultMap" type="com.ces.Village.pojo.entity.GigHires">
+    <resultMap id="BaseResultMap" type="com.ces.village.pojo.entity.GigHires">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="userId" column="user_id" jdbcType="BIGINT"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
     </resultMap>
 
     <!--    status == 0表示查询任意状态的招聘信息-->
-    <select id="getPageByUserIdAndStatus" resultType="com.ces.Village.pojo.entity.GigHires">
+    <select id="getPageByUserIdAndStatus" resultType="com.ces.village.pojo.entity.GigHires">
         SELECT g.*,r.reason
         from gig_hires g
         LEFT JOIN reason r ON g.id= r.information_id AND r.type = 2

@@ -1,14 +1,13 @@
-package com.ces.Village.utils;
+package com.ces.village.utils;
 
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.constant.JwtClaimsConstant;
-import com.ces.Village.properties.JwtProperties;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.constant.JwtClaimsConstant;
+import com.ces.village.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -54,14 +53,14 @@ public class JwtUtil {
      * @return
      */
     public static Claims parseJWT(String secretKey, String token) {
-        // 得到DefaultJwtParser
         return Jwts.parser()
                 // 设置签名的秘钥
                 .setSigningKey(secretKey.getBytes(StandardCharsets.UTF_8))
+                .build()
                 // 设置需要解析的jwt
-                .parseClaimsJws(token).getBody();
+                .parseClaimsJws(token)
+                .getBody();
     }
-
 
     public static CurrentUser parseJWTToCurUser(JwtProperties jwtProperties, String token) {
         try {

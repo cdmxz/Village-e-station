@@ -1,7 +1,7 @@
-package com.ces.Village.mapper;
+package com.ces.village.mapper;
 
-import com.ces.Village.pojo.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ces.village.pojo.entity.Article;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

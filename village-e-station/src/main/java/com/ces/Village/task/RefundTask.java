@@ -1,11 +1,10 @@
-package com.ces.Village.task;
+package com.ces.village.task;
 
-import com.ces.Village.constant.RefundApplyConstant;
-import com.ces.Village.pojo.entity.Refund;
-import com.ces.Village.service.OrdersService;
-import com.ces.Village.service.RefundService;
+import com.ces.village.constant.RefundApplyConstant;
+import com.ces.village.pojo.entity.Refund;
+import com.ces.village.service.OrdersService;
+import com.ces.village.service.RefundService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
@@ -40,7 +39,7 @@ public class RefundTask {
         for (Refund refund : refundList) {
             String refundNo = "refund:" + refund.getRefundNo().toString();
             // 同一个订单号的多笔退款，需要相隔1分钟
-            if (Boolean.TRUE.equals(redisTemplate.hasKey(refundNo))) {
+            if (redisTemplate.hasKey(refundNo)) {
                 continue;
             }
             redisTemplate.boundValueOps(refundNo).expire(Duration.ofSeconds(61));

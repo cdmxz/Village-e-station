@@ -1,4 +1,4 @@
-package com.ces.Village.constant;
+package com.ces.village.constant;
 
 /**
  * 申请退款常量

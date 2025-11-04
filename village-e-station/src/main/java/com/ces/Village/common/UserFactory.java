@@ -1,10 +1,8 @@
-package com.ces.Village.common;
+package com.ces.village.common;
 
-import com.ces.Village.pojo.entity.BaseUser;
-import com.ces.Village.service.AdminService;
-import com.ces.Village.service.UsersService;
-import com.ces.Village.service.impl.AdminServiceImpl;
-import com.ces.Village.service.impl.UsersServiceImpl;
+import com.ces.village.pojo.entity.BaseUser;
+import com.ces.village.service.AdminService;
+import com.ces.village.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

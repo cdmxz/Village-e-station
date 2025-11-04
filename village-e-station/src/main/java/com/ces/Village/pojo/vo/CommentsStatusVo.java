@@ -1,8 +1,7 @@
-package com.ces.Village.pojo.vo;
+package com.ces.village.pojo.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@ApiModel(description = "待审核评论列表")
+@Schema(description = "待审核评论列表")
 @Accessors(chain = true)
 public class CommentsStatusVo {
     @JsonProperty("comment_id")

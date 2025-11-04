@@ -27,9 +27,9 @@ logback
 
     <!--    控制台输出格式-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${PATTERN}</pattern>
-        </layout>
+        </encoder>
     </appender>
 
     <!-- 信息日志：输出全部日志到文件 -->
@@ -71,14 +71,6 @@ logback
             <maxFileSize>50MB</maxFileSize>
         </rollingPolicy>
         <ImmediateFlush>true</ImmediateFlush>
-    </appender>
-
-    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">
-        <queueSize>5000</queueSize>
-        <discardingThreshold>0</discardingThreshold>
-        <includeCallerData>false</includeCallerData>
-        <appender-ref ref="fileInfo"/>
-        <appender-ref ref="fileError"/>
     </appender>
 
     <!-- 日志输出级别 -->

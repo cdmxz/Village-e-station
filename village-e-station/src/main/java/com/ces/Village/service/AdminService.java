@@ -1,12 +1,12 @@
-package com.ces.Village.service;
+package com.ces.village.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.common.R;
-import com.ces.Village.pojo.dto.AdminLoginDTO;
-import com.ces.Village.pojo.dto.UserInformationDTO;
-import com.ces.Village.pojo.entity.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ces.Village.pojo.vo.LoginVO;
+import com.ces.village.common.R;
+import com.ces.village.pojo.dto.AdminLoginDTO;
+import com.ces.village.pojo.dto.UserInformationDTO;
+import com.ces.village.pojo.entity.Admin;
+import com.ces.village.pojo.vo.LoginVO;
 
 /**
  * <p>

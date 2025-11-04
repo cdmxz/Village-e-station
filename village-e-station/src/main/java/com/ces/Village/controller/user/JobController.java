@@ -1,32 +1,28 @@
-package com.ces.Village.controller.user;
+package com.ces.village.controller.user;
 
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ces.Village.annotation.LoginRequired;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.common.R;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.constant.JobStatusConstant;
-import com.ces.Village.pojo.dto.JobAddDTO;
-import com.ces.Village.pojo.dto.JobDTO;
-import com.ces.Village.pojo.dto.ReviewPushDTO;
-import com.ces.Village.pojo.vo.JobListVo;
-import com.ces.Village.service.BaseJobService;
-import com.ces.Village.service.WxMsgService;
-import com.ces.Village.service.factory.JobServiceFactory;
-import com.ces.Village.service.impl.WxMsgServiceImpl;
-import com.ces.Village.utils.StringUtils;
-import io.swagger.annotations.Api;
+import com.ces.village.annotation.LoginRequired;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.common.R;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.constant.JobStatusConstant;
+import com.ces.village.pojo.dto.JobAddDTO;
+import com.ces.village.pojo.dto.JobDTO;
+import com.ces.village.pojo.dto.ReviewPushDTO;
+import com.ces.village.pojo.vo.JobListVo;
+import com.ces.village.service.BaseJobService;
+import com.ces.village.service.WxMsgService;
+import com.ces.village.service.factory.JobServiceFactory;
+import com.ces.village.utils.StringUtils;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Log4j2
-@Api(tags = "就业接口")
+@Tag(name = "就业接口")
 @RestController
 @RequestMapping("/api/job")
 public class JobController {

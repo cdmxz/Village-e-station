@@ -1,19 +1,18 @@
-package com.ces.Village.service.impl;
+package com.ces.village.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ces.Village.common.BaseContext;
-import com.ces.Village.common.CurrentUser;
-import com.ces.Village.exception.CustomException;
-import com.ces.Village.constant.ErrorCodeEnum;
-import com.ces.Village.mapper.ShoppingCartMapper;
-import com.ces.Village.pojo.entity.Goods;
-import com.ces.Village.pojo.entity.ShoppingCart;
-import com.ces.Village.pojo.vo.ShoppingCartGoodsVO;
-import com.ces.Village.service.GoodsService;
-import com.ces.Village.service.ShoppingCartService;
+import com.ces.village.common.BaseContext;
+import com.ces.village.common.CurrentUser;
+import com.ces.village.constant.ErrorCodeEnum;
+import com.ces.village.exception.CustomException;
+import com.ces.village.mapper.ShoppingCartMapper;
+import com.ces.village.pojo.entity.Goods;
+import com.ces.village.pojo.entity.ShoppingCart;
+import com.ces.village.pojo.vo.ShoppingCartGoodsVO;
+import com.ces.village.service.GoodsService;
+import com.ces.village.service.ShoppingCartService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
